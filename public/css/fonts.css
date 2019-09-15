@@ -1,0 +1,164 @@
+/*Montserrat Light*/
+
+@font-face {
+	font-family: 'M-Light';
+	src: url('../fonts/Montserrat/Light/Montserrat-Light.eot');
+	src: url('../fonts/Montserrat/Light/Montserrat-Light.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Montserrat/Light/Montserrat-Light.woff') format('woff'),
+		 url('../fonts/Montserrat/Light/Montserrat-Light.ttf') format('truetype'),
+		 url('../fonts/Montserrat/Light/Montserrat-Light.svg#M-Light') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+
+
+/* Montserrat Regular */
+@font-face {
+	font-family: 'M-Regular';
+	src: url('../fonts/Montserrat/Regular/Montserrat-Regular.eot');
+	src: url('../fonts/Montserrat/Regular/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Montserrat/Regular/Montserrat-Regular.woff') format('woff'),
+		 url('../fonts/Montserrat/Regular/Montserrat-Regular.ttf') format('truetype'),
+		 url('../fonts/Montserrat/Regular/Montserrat-Regular.svg#M-Regular') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+/*Montserrat Medium*/
+
+@font-face {
+	font-family: 'M-Medium';
+	src: url('../fonts/Montserrat/Medium/Montserrat-Medium.eot');
+	src: url('../fonts/Montserrat/Medium/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Montserrat/Medium/Montserrat-Medium.woff') format('woff'),
+		 url('../fonts/Montserrat/Medium/Montserrat-Medium.ttf') format('truetype'),
+		 url('../fonts/Montserrat/Medium/Montserrat-Medium.svg#M-Medium') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+/*Montserrat SemiBold*/
+
+@font-face {
+	font-family: 'M-SemiBold';
+	src: url('../fonts/Montserrat/SemiBold/Montserrat-SemiBold.eot');
+	src: url('../fonts/Montserrat/SemiBold/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Montserrat/SemiBold/Montserrat-SemiBold.woff') format('woff'),
+		 url('../fonts/Montserrat/SemiBold/Montserrat-SemiBold.ttf') format('truetype'),
+		 url('../fonts/Montserrat/SemiBold/Montserrat-SemiBold.svg#M-SemiBold') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+/*Montserrat Bold*/
+
+@font-face {
+	font-family: 'M-Bold';
+	src: url('../fonts/Montserrat/Bold/Montserrat-Bold.eot');
+	src: url('../fonts/Montserrat/Bold/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Montserrat/Bold/Montserrat-Bold.woff') format('woff'),
+		 url('../fonts/Montserrat/Bold/Montserrat-Bold.ttf') format('truetype'),
+		 url('../fonts/Montserrat/Bold/Montserrat-Bold.svg#M-Bold') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+/*Montserrat Black*/
+
+@font-face {
+	font-family: 'M-Black';
+	src: url('../fonts/Montserrat/Black/Montserrat-Black.eot');
+	src: url('../fonts/Montserrat/Black/Montserrat-Black.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Montserrat/Black/Montserrat-Black.woff') format('woff'),
+		 url('../fonts/Montserrat/Black/Montserrat-Black.ttf') format('truetype'),
+		 url('../fonts/Montserrat/Black/Montserrat-Black.svg#M-Black') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+
+/*Connect UniSans*/
+
+@font-face {
+	font-family:"U-Thin";
+	src:url(../fonts/UniSans/Thin/UniSansThin.ttf);
+}
+
+@font-face {
+	font-family:"U-Light";
+	src:url(../fonts/UniSans/Light/UniSansLight.ttf);
+}
+
+@font-face {
+	font-family:"U-Regular";
+	src:url(../fonts/UniSans/Regular/UniSansRegular.ttf);
+}
+
+@font-face {
+	font-family:"U-SemiBold";
+	src:url(../fonts/UniSans/SemiBold/UniSansSemiBold.ttf);
+}
+
+@font-face {
+	font-family:"U-Heavy";
+	src:url(../fonts/UniSans/Heavy/UniSansHeavy.ttf);
+}
+
+@font-face {
+	font-family:"U-Bold";
+	src:url(../fonts/UniSans/Bold/UniSansBold.ttf);
+}
+
+@font-face {
+	font-family:"U-Book";
+	src:url(../fonts/UniSans/Book/UniSansBook.ttf);
+}
+
+/*connect magistral*/
+
+@font-face {
+	font-family: 'Magistral-L';
+	src: url('../fonts/magistral/Light/Magistral-Light.eot');
+	src: url('../fonts/magistral/Light/Magistral-Light.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/magistral/Light/Magistral-Light.woff') format('woff'),
+		 url('../fonts/magistral/Light/Magistral-Light.ttf') format('truetype'),
+		 url('../fonts/magistral/Light/Magistral-Light.svg#Magistral-L') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+
+@font-face {
+	font-family: 'Magistral-R';
+	src: url('../fonts/magistral/Regular/MagistralC.eot');
+	src: url('../fonts/magistral/Regular/MagistralC.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/magistral/Regular/MagistralC.woff') format('woff'),
+		 url('../fonts/magistral/Regular/MagistralC.ttf') format('truetype'),
+		 url('../fonts/magistral/Regular/MagistralC.svg#Magistral-R') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Magistral-B';
+	src: url('../fonts/magistral/Bold/MagistralC-Bold.eot');
+	src: url('../fonts/magistral/Bold/MagistralC-Bold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/magistral/Bold/MagistralC-Bold.woff') format('woff'),
+		 url('../fonts/magistral/Bold/MagistralC-Bold.ttf') format('truetype'),
+		 url('../fonts/magistral/Bold/MagistralC-Bold.svg#Magistral-B') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+/* connect fontawesome */
+
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('../fonts/fonts-awesome/fontawesome-webfont.eot');
+	src: url('../fonts/fonts-awesome/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/fonts-awesome/fontawesome-webfont.woff') format('woff'),
+		 url('../fonts/fonts-awesome/fontawesome-webfont.ttf') format('truetype'),
+		 url('../fonts/fonts-awesome/fontawesome-webfont.svg#FontAwesome') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
