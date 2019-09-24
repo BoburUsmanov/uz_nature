@@ -840,8 +840,31 @@ body {
   border: 1px solid #dadada;
   padding-top: 15px;
   padding-left: 15px;
+  overflow: hidden;
   cursor: pointer;
   position: relative;
+  transition: 0.25s ease;
+}
+.activity__item svg path {
+  fill: #17A085;
+}
+.activity__item:hover {
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+.activity__item:hover .circle {
+  width: 200px;
+  height: 200px;
+  background-color: #17A085;
+  right: -50px;
+  bottom: -50px;
+}
+.activity__item:hover svg path {
+  fill: #fff;
+}
+.activity__item:hover svg {
+  width: 80px;
+  height: 75px;
 }
 .activity__item .circle {
   position: absolute;
@@ -854,6 +877,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.25s ease;
 }
 .activity__title {
   color: #000;
@@ -2089,4 +2113,13 @@ body {
 }
 .general__send.red {
   background-color: #A01717;
+}
+.event {
+  margin-top: 25px;
+}
+.event__box {
+  background-color: #fff;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.2);
 }

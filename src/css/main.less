@@ -919,8 +919,31 @@ body {
     border: 1px solid #dadada;
     padding-top: 15px;
     padding-left: 15px;
+    overflow: hidden;
     cursor: pointer;
     position: relative;
+    transition: 0.25s ease;
+    svg path{
+      fill: #17A085;
+    }
+    &:hover{
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+      .circle{
+        width: 200px;
+        height: 200px;
+        background-color: #17A085;
+        right: -50px;
+        bottom: -50px;
+      }
+      svg path{
+        fill: #fff;
+      }
+      svg{
+        width: 80px;
+        height: 75px;
+      }
+    }
     .circle {
       position: absolute;
       width: 75px;
@@ -932,6 +955,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: 0.25s ease;
     }
   }
   &__title {
@@ -2301,4 +2325,14 @@ body {
     &.red{
         background-color: #A01717;
     }
+}
+
+.event{
+  margin-top: 25px;
+  &__box{
+    background-color: #fff;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.2);
+  }
 }
