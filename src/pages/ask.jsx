@@ -4,22 +4,20 @@ import { Link } from "react-router-dom";
 import Title from "../components/common/title";
 import Axios from "axios";
 
-export default class Physical extends Component {
+export default class Ask extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
       phone: "",
-      email: "",
-      address: "",
+      title: "",
       message: "",
       loading: true
     };
 
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangePhone = this.handleChangePhone.bind(this);
-    this.handleChangeEmail = this.handleChangeEmail.bind(this);
-    this.handleChangeAddress = this.handleChangeAddress.bind(this);
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeMessage = this.handleChangeMessage.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -31,25 +29,19 @@ export default class Physical extends Component {
   handleChangePhone(event) {
     this.setState({ phone: event.target.value });
   }
-  handleChangeEmail(event) {
-    this.setState({ email: event.target.value });
-  }
-  handleChangeAddress(event) {
-    this.setState({ address: event.target.value });
+
+  handleChangeTitle(event) {
+    this.setState({ title: event.target.value });
   }
   handleChangeMessage(event) {
     this.setState({ message: event.target.value });
   }
   handleSubmit(event) {
     event.preventDefault();
-    Axios.get(`http://uz.orikzor.com/physicals?name=${this.state.name}&phone=${this.state.phone}&email=${this.state.email}&message=${this.state.message}`).then((response) => {
+    Axios.get(`http://uz.orikzor.com/messages?name=${this.state.name}&phone=${this.state.phone}&title=${this.state.title}&message=${this.state.message}`).then((response) => {
             console.log(response);
             alert('Cообщение успешно отправлено');
-            this.setState({  name: "",
-            phone: "",
-            email: "",
-            address: "",
-            message: "", });
+            this.setState({ name: '', phone: "",title: "",message: "", });
           }, (error) => {
             console.log(error); });
   }
@@ -68,13 +60,13 @@ export default class Physical extends Component {
                         <Link to="/">Главная</Link>
                       </li>
                       <li>
-                        <Link to="/physical">Портал по обращением физических лиц</Link>
+                        <Link to="/ask">Задать вопрос</Link>
                       </li>
                     </ul>
                   </div>
 
                   <div className="col-12 mb-5">
-                    <Title title="Портал по обращением физических лиц" />
+                    <Title title="Задать вопрос" />
                   </div>
                 </div>
                 <div className="haspadding">
@@ -90,9 +82,9 @@ export default class Physical extends Component {
                                   value={this.state.name}
                                   onChange={this.handleChangeName}
                                   className="general__input"
-                                  placeholder="Физическое лицо"
+                                  placeholder="Имя"
                                 />
-                                <label htmlFor="">Имя(физическое лицо)</label>
+                                <label htmlFor="">Имя</label>
                               </div>
 
                               <div className="form-group mb-5">
@@ -109,24 +101,15 @@ export default class Physical extends Component {
                               <div className="form-group mb-5">
                                 <input
                                   type="text"
-                                  value={this.state.email}
-                                  onChange={this.handleChangeEmail}
+                                  value={this.state.title}
+                                  onChange={this.handleChangeTitle}
                                   className="general__input"
-                                  placeholder="E-mail"
+                                  placeholder="Тема обращения"
                                 />
-                                <label htmlFor="">Электронная почта</label>
+                                <label htmlFor="">Тема обращения</label>
                               </div>
 
-                              <div className="form-group mb-5">
-                                <input
-                                  type="text"
-                                  value={this.state.address}
-                                  onChange={this.handleChangeAddress}
-                                  className="general__input"
-                                  placeholder="Адрес:"
-                                />
-                                <label htmlFor="">Место жительства*</label>
-                              </div>
+                             
                               <div className="form-group mb-5">
                                 <textarea
                                   className="general__input"
@@ -134,11 +117,9 @@ export default class Physical extends Component {
                                   onChange={this.handleChangeMessage}
                                   placeholder="Описание"
                                 ></textarea>
-                                <label htmlFor="">Текст обращения*</label>
+                                <label htmlFor="">Текст обращения</label>
                               </div>
-                              <p className="mb-2">
-                                * Поле обязательное для заполнения
-                              </p>
+
                               <div className="d-flex mt-5 justify-content-center">
                                 <button
                                   className="general__send mr-5"

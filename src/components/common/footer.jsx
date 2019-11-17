@@ -89,13 +89,13 @@ import {oz} from './../../lang/oz';
                         </h2>
                                         <ul className="footer__links">
                                             <li>
-                                                <Link to="/">Юридическое лицо</Link>
+                                                <Link to="/juridical">Юридическое лицо</Link>
                                             </li>
                                             <li>
-                                                <Link to="/">Физическое лицо</Link>
+                                                <Link to="/physical">Физическое лицо</Link>
                                             </li>
                                             <li>
-                                                <Link to="/">Задать вопрос</Link>
+                                                <Link to="/ask">Задать вопрос</Link>
                                             </li>
                                         </ul>
                                     </div>
