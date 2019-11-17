@@ -52,10 +52,10 @@ $(document).ready(function(){
     $('.faq__item').on('click',function(){
 
         $(this).siblings().removeClass('active').find('.faq__content').slideUp();
-        $(this).siblings().find('.fa').removeClass('fa-minus').addClass('fa-plus');
+        $(this).siblings().find('.fa').removeClass('fa-chevron-up').addClass('fa-chevron-down');
 
         $(this).find('.faq__content').slideDown();
-        $(this).find('.fa').removeClass('fa-plus').addClass('fa-minus');
+        $(this).find('.fa').removeClass('fa-chevron-down').addClass('fa-chevron-up');
          $(this).addClass('active')
     });
 

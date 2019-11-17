@@ -45,12 +45,12 @@ export default  function Header() {
 
             <div className="header__center general__container">
                 <div className="container-fluid">
-                    <div className="row">
+                    <div className="row align-items-center">
                         <div className="col-3">
                            <Logo />
                         </div>
                         <div className="col-9 text-right">
-                            <img src="/img/flag.png" alt="" />
+                            <img src="/img/flag.png" className="img-fluid" alt="" />
                         </div>
                     </div>
                 </div>

@@ -1,12 +1,22 @@
 import { combineReducers } from 'redux';
 import eventsReducer from './eventsReducer';
 import languageReducer from './languageReducer';
-import regionReducer from './regionReducer';
+import regionsReducer from './regionsReducer';
 import comitetReducer from './comitetReducer';
+import activitiesReducer from './activitiesReducer';
+import newsReducer from './newsReducer';
+import sectionsReducer from './sectionsReducer';
+import legalsReducer from './legalsReducer';
+import legalsphotoReducer from './legalsphotoReducer';
 
 export default combineReducers({
-   events: eventsReducer,
+   news: newsReducer,
+   events:eventsReducer,
    lang:languageReducer,
-   region:regionReducer,
-   persons:comitetReducer
+   regions:regionsReducer,
+   persons:comitetReducer,
+   activities:activitiesReducer,
+   sections: sectionsReducer,
+   legals: legalsReducer,
+   legalsphoto: legalsphotoReducer
 });

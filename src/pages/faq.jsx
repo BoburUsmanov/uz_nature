@@ -3,8 +3,20 @@ import Sidebar from '../components/common/sidebar';
 import { Link } from 'react-router-dom';
 import Title from '../components/common/title';
 import Useful from '../components/common/useful';
+import $ from 'jquery';
 
 export default class FAQ extends Component {
+    componentDidMount(){
+        $('.faq__item').on('click',function(){
+
+            $(this).siblings().removeClass('active').find('.faq__content').slideUp();
+            $(this).siblings().find('.fa').removeClass('fa-minus').addClass('fa-plus');
+    
+            $(this).find('.faq__content').slideDown();
+            $(this).find('.fa').removeClass('fa-plus').addClass('fa-minus');
+             $(this).addClass('active')
+        });
+    }
     render() {
         return (
             <div className="general__container news">

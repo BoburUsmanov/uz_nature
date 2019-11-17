@@ -1,23 +1,17 @@
-import {ALL__EVENTS,SINGLE__EVENT } from '../actions/types';
+import {EVENTS} from '../actions/types';
 
 const initialState = {
-    events: [],
-    event: []
+    events: []
 }
 
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case ALL__EVENTS:
+        case EVENTS:
             return {
                 ...state,
                 events: action.payload
-            }
-        case SINGLE__EVENT:
-            return{
-                ...state,
-                event:action.payload
-            }    
+            }  
         default:
             return state
     }

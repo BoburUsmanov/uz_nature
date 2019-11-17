@@ -5,17 +5,25 @@ import { connect } from "react-redux";
 import { ru } from "./../lang/ru";
 import { uz } from "./../lang/uz";
 import { en } from "./../lang/en";
+import { oz } from "./../lang/oz";
 import Title from "../components/common/title";
-import { events_all } from "./../redux/actions/actions";
+import { news, activities,sections } from "./../redux/actions/actions";
 import Anchor from "../components/common/link";
 import MapUzbekistan from "../components/map";
 import PhotoSlider from "../components/photoSlider";
-import LinkSlider from "../components/linkSlider";
 import Useful from "../components/common/useful";
+import $ from 'jquery';
 
 class Home extends Component {
   componentDidMount() {
-    this.props.events_all("ru");
+    this.props.news();
+    this.props.activities();
+    this.props.sections();
+    this.props.activities();
+    $('.main__map-box svg path').on('click',function(){
+      $(this).siblings().removeClass('active');
+      $(this).addClass('active');
+  });
   }
   render() {
     var ln;
@@ -23,9 +31,22 @@ class Home extends Component {
       ln = this.props.ru;
     } else if (this.props.lang == "uz") {
       ln = this.props.uz;
-    } else {
+    } else if (this.props.lang == "oz"){
+      ln = this.props.oz;
+    }
+    else{
       ln = this.props.en;
     }
+
+    let main__news_left = this.props.newss.filter(n => {
+      return n.lang === this.props.lang;
+    });
+    let main__news_right = this.props.newss.filter(n => {
+      return n.lang === this.props.lang;
+    });
+
+    
+
     return (
       <div className="main general__container">
         <div className="main__top">
@@ -48,7 +69,7 @@ class Home extends Component {
                     </span>
                     <span className="col-10">{ln["For legal entities"]}</span>
                   </Link>
-                  <Link to="/" className="main__services-link row no-gutters">
+                  <Link to="/physical" className="main__services-link row no-gutters">
                     <span className="col-2">
                       <img src="/img/main/people2.png" />
                     </span>
@@ -80,12 +101,17 @@ class Home extends Component {
                 <div className="main__news-left">
                   <Title title={ln["last news"]} />
                   <div className="main__news-box">
-                    {this.props.news
-                      ? this.props.news.map(n => (
+                    {main__news_left
+                      ? main__news_left.map(n => (
                           <div className="row align-items-center main__news-list no-gutters">
-                            <div className="col-2 news-date">05.08.2019</div>
+                            <div className="col-2 news-date">
+                              {n.c_d + "." + n.c_m + "." + n.c_y}
+                            </div>
                             <div className="col-10">
-                              <Link to="" className="news-link">
+                              <Link
+                                to={"/news/" + n.one_id}
+                                className="news-link"
+                              >
                                 {n.name}
                               </Link>
                             </div>
@@ -100,12 +126,19 @@ class Home extends Component {
                 <div className="main__news-right">
                   <Title title={ln["ecology"]} />
                   <div className="main__news-box">
-                    {this.props.news
-                      ? this.props.news.map(n => (
+                    {main__news_right
+                      ? main__news_right.map(n => (
                           <div className="row align-items-center main__news-list no-gutters">
-                            <div className="col-2 news-date">05.08.2019</div>
+                            <div className="col-2 news-date">
+                              {n.c_d + "." + n.c_m + "." + n.c_y}
+                            </div>
                             <div className="col-10">
-                              <Link className="news-link">{n.name}</Link>
+                              <Link
+                                to={"/news/" + n.one_id}
+                                className="news-link"
+                              >
+                                {n.name}
+                              </Link>
                             </div>
                           </div>
                         ))
@@ -129,9 +162,11 @@ class Home extends Component {
                       <Title title={ln["MAIN DIRECTIONS OF ACTIVITY"]} />
                     </div>
                   </div>
+
                   <div className="row no-gutters">
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/1"></Link>
                         <h2 className="activity__title">
                           {ln["Atmospheric air and ozone layer"]}
                         </h2>
@@ -173,6 +208,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/2"></Link>
                         <h2 className="activity__title">
                           {ln["Water resources"]}
                         </h2>
@@ -214,6 +250,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/3"></Link>
                         <h2 className="activity__title">
                           {ln["Land resources and subsoil"]}
                         </h2>
@@ -255,6 +292,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/4"></Link>
                         <h2 className="activity__title">
                           {ln["Waste management"]}
                         </h2>
@@ -352,6 +390,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/5"></Link>
                         <h2 className="activity__title">
                           {ln["Biodiversity"]}
                         </h2>
@@ -400,6 +439,7 @@ class Home extends Component {
                   <div className="row no-gutters">
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/6"></Link>
                         <h2 className="activity__title">{ln["OPT"]}</h2>
                         <div className="circle">
                           <svg
@@ -443,6 +483,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/7"></Link>
                         <h2 className="activity__title">
                           {ln["Environmental monitoring"]}
                         </h2>
@@ -472,6 +513,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/8"></Link>
                         <h2 className="activity__title">
                           {ln["State eco supervision"]}
                         </h2>
@@ -533,6 +575,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/9"></Link>
                         <h2 className="activity__title">
                           {ln["State expertise"]}
                         </h2>
@@ -610,6 +653,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/10"></Link>
                         <h2 className="activity__title">
                           {ln["Environmental certification"]}
                         </h2>
@@ -662,6 +706,7 @@ class Home extends Component {
                   <div className="row no-gutters">
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/11"></Link>
                         <h2 className="activity__title">{ln["Eco energy"]}</h2>
                         <div className="circle">
                           <svg
@@ -685,6 +730,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/12"></Link>
                         <h2 className="activity__title">{ln["Education"]}</h2>
                         <div className="circle">
                           <svg
@@ -704,6 +750,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/13"></Link>
                         <h2 className="activity__title">
                           {ln["Scientific activity"]}
                         </h2>
@@ -765,6 +812,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/14"></Link>
                         <h2 className="activity__title">{ln["Fund"]}</h2>
                         <div className="circle">
                           <svg
@@ -788,6 +836,7 @@ class Home extends Component {
                     </div>
                     <div className="col">
                       <div className="activity__item">
+                        <Link to="/activity/15"></Link>
                         <h2 className="activity__title">
                           {ln["International"]}
                         </h2>
@@ -907,14 +956,16 @@ class Home extends Component {
   }
 }
 const mapStateToProps = state => ({
-  news: state.events.events,
+  newss: state.news.news,
   lang: state.lang.lang,
+  activitiy: state.activities.activities,
   ru: ru,
   uz: uz,
+  oz: oz,
   en: en
 });
 
 export default connect(
   mapStateToProps,
-  { events_all }
+  { news, activities,sections }
 )(Home);

@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 import Title from '../components/common/title';
 import Sidebar from '../components/common/sidebar';
 import { Link } from 'react-router-dom';
-import { comitet } from '../redux/actions/actions';
+import { regions } from '../redux/actions/actions';
 import { connect } from 'react-redux';
 
 class Territorial extends Component {
 
     componentDidMount() {
-        this.props.comitet()
+        this.props.regions()
     }
     render() {
+        let regions_array = this.props.regions_all.find(region => {
+            return (
+               region.lang === this.props.lang
+            );
+          });
+
+          console.log(regions_array);
         return (
             <div className="territorial general__container">
                 <div className="container-fluid">
@@ -138,8 +145,8 @@ class Territorial extends Component {
 }
 
 const mapStateToProps = state => ({
-    persons: state.persons.persons,
+    regions_all: state.regions.regions,
     lang: state.lang.lang
 })
 
-export default connect(mapStateToProps, { comitet })(Territorial);
+export default connect(mapStateToProps, { regions })(Territorial);

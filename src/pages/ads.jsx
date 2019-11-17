@@ -3,12 +3,11 @@ import Sidebar from '../components/common/sidebar';
 import Useful from '../components/common/useful';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { find_event } from './../redux/actions/actions';
 import Title from '../components/common/title';
 
  class Ads extends Component {
     componentDidMount() {
-        this.props.find_event(this.props.lang, this.props.match.params.id);
+       
     }
     render() {
         return (
@@ -68,4 +67,4 @@ const mapStateToProps = state => ({
     lang: state.lang.lang,
     ads: state.events.event
 })
-export default connect(mapStateToProps, { find_event })(Ads)
+export default connect(mapStateToProps)(Ads)

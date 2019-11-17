@@ -11,6 +11,11 @@ class Center extends Component {
         this.props.comitet()
     }
     render() {
+        let persons_array = this.props.persons.filter(p => {
+            return (
+              p.lang === this.props.lang
+            );
+          });
         return (
             <div className="center general__container">
                 <div className="container-fluid">
@@ -36,8 +41,7 @@ class Center extends Component {
                                         <Title title="Центральный аппарат" />
                                     </div>
                                     <div className="col-12">
-                                        {console.log(this.props.persons)}
-                                        {this.props.persons.map(person => <div className="center__item">
+                                        {persons_array.map(person => <div className="center__item">
                                             <div className="row no-gutters">
                                                 <div className="col-5 center__item-left">
                                                     <img src={"http://uz.orikzor.com/" + person.photo} alt="" />

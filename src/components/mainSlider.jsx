@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
 import { connect } from 'react-redux';
-import { events_all } from './../redux/actions/actions';
+import { news } from './../redux/actions/actions';
 import { Link } from 'react-router-dom';
 
 class MainSlider extends Component {
     componentDidMount() {
-        this.props.events_all('ru');
+        this.props.news();
     }
   
     render() {
@@ -17,6 +17,8 @@ class MainSlider extends Component {
             slidesToShow: 1,
             slidesToScroll: 1
         };
+        let news__slider = this.props.slides.filter(news=>{return news.lang === this.props.lang});
+        console.log(news__slider)
         return (
 
 
@@ -25,21 +27,21 @@ class MainSlider extends Component {
 
                 <Slider {...settings}>
 
-                    {(this.props.slides) ? this.props.slides.map(slide => <div className="main__slider-item">
-                        <img src={"http://uz.orikzor.com/" + slide.photo} alt="" />
+                    {news__slider.map(news => <div className="main__slider-item">
+                        <img src={"http://uz.orikzor.com/" + news.photo} alt="" />
 
                         <div className="bottom">
                             <div className="bottom__left">
-                                <span className="day">26</span>
-                                <span className="month">июня</span>
-                                <span className="year">2019 г</span>
+                                <span className="day">{news.c_d}</span>
+                               <div className="d-flex justify-content-center"> <span className="month">{news.c_m}</span>/
+                                <span className="year">{news.c_y}</span></div>
                             </div>
                             <div className="bottom__right">
-                                <Link> {slide.name}</Link>
+                                <Link to={"/news/" + news.one_id}> {news.name}</Link>
                             </div>
                         </div>
 
-                    </div>) : 'Not found'}
+                    </div>)}
 
                 </Slider>
             </div>
@@ -48,7 +50,7 @@ class MainSlider extends Component {
 }
 
 const mapStateToProps = state => ({
-    slides: state.events.events,
+    slides: state.news.news,
     lang: state.lang.lang
 })
-export default connect(mapStateToProps, { events_all })(MainSlider);
+export default connect(mapStateToProps, { news })(MainSlider);

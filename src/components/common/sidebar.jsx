@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import Title from './title';
 import { connect } from 'react-redux';
 import Ccalendar from './calendar';
-import { events_all } from './../../redux/actions/actions';
+import { news } from './../../redux/actions/actions';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 
 class Sidebar extends Component {
     componentDidMount() {
-        this.props.events_all(this.props.lang);
+        this.props.news();
     }
     render() {
         const settings = {
@@ -31,7 +31,7 @@ class Sidebar extends Component {
                 </div>
                 <div className="sidebar__popular">
                     <Title title="Популярные новости" />
-                    {
+                    {/* {
                         this.props.events ? this.props.events.map(event =>
                             <div className="sidebar__news">
                                 <p className="sidebar__news-text">
@@ -46,7 +46,7 @@ class Sidebar extends Component {
                                 </div>
                             </div>
                         ) : 'no news'
-                    }
+                    } */}
                     <div className="text-right">
                         <Link to="/news" className="general__anchor">Все новости</Link>
                     </div>
@@ -135,4 +135,4 @@ const mapStateToProps = state => (
         lang: state.lang.lang
     }
 )
-export default connect(mapStateToProps, { events_all })(Sidebar)
+export default connect(mapStateToProps, { news })(Sidebar)

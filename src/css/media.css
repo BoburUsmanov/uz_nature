@@ -1,0 +1,164 @@
+@media only screen and (max-width: 1600px) {
+    .general__container{
+        padding: 0 15px;
+    }
+    .header__center{
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .header__lang li{
+        font-size: 16px;
+    }
+    .header__logo{
+        font-size: 20px;
+    }
+    .header__menu > li a{
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+    .header__search input[type="text"]{
+        height: 35px;
+    }
+    .main__services-link{
+        padding-left: 30px;
+        font-size: 18px;
+    }
+    .general__title{
+        font-size: 28px;
+    }
+    .main__slider-item{
+        height: 60vh;
+    }
+    .main__slider-item .bottom__right a{
+        font-size: 18px;
+    }
+    .main__photo-item .box{
+        min-height: 225px;
+    }
+    .footer iframe{
+        margin-left: -10px;
+    }
+    .footer .header__logo{
+        width: 100%;
+    }
+    .footer .header__logo{
+        font-size: 14px;
+    }
+    .footer__bottom{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .footer__links li a{
+        padding: 10px;
+        width: 100%;
+    }
+    .footer__title{
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+    .footer__top{
+       padding: 20px 15px;
+    }
+    .header__menu > li .submenu{
+        top: 43px;
+    }
+    .header__social li a{
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        font-size: 16px;
+    }
+    .react-calendar{
+        width: unset;
+        overflow: hidden;
+    }
+    .general__pagination li a{
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    .news__text{
+        margin-top: 10px;
+    }
+    .news__box{
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .sidebar__calendar{
+        padding-top: 25px;
+    }
+    .main__useful-box{
+        padding-top: 25px;
+        padding-bottom: 10px;
+    }
+    .projects__btn{
+        padding: 15px;
+        font-size: 16px;
+    }
+    .projects__box{
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .projects__item-title{
+        font-size: 18px;
+    }
+    .projects__item-text{
+        margin-top: 10px;
+    }
+    .press__item{
+        padding: 15px;
+        margin-top: 25px;
+    }
+    .press__item-title{
+        font-size: 20px;
+    }
+    .press__item-text{
+        font-size: 16px;
+    }
+    .interviews__item-content .title{
+        font-size: 20px;
+    }
+    .center__item-right{
+        border-left-width: 5px;
+    }
+    .center__item-title{
+        margin-bottom: 20px;
+    }
+    .territorial__item{
+        margin-top: 15px;
+        padding: 15px;
+        min-height: 75px;
+        font-size: 16px;
+    }
+    .territorial__text{
+        font-size: 24px;
+    }
+    .territorial__guide h2{
+        font-size: 24px;
+    }
+    .haspadding{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .haspadding .bold{
+        font-size: 16px;
+        margin-left: 5px !important;
+    }
+    .sidebar__news-text{
+        font-size: 16px;
+    }
+    .legalactivity__link{
+        line-height: 30px;
+        font-size: 18px;
+    }
+    .leadership__content{
+        padding: 15px;
+        border-left-width: 5px;
+    }
+    .leadership__name{
+        margin-bottom: 10px;
+    }
+    .leadership__item{
+        background-color: #f8f8f8;
+    }
+}

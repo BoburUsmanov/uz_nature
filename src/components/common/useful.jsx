@@ -4,13 +4,13 @@ import {ru} from './../../lang/ru';
 import {uz} from './../../lang/uz';
 import {en} from './../../lang/en';
 import LinkSlider from '../linkSlider';
-import {events_all} from './../../redux/actions/actions';
+import {news} from './../../redux/actions/actions';
 import {connect} from 'react-redux';
 
  class Useful extends Component {
 
     componentDidMount() {
-        this.props.events_all('ru')
+        this.props.news();
     }
     render() {
         var ln;
@@ -54,4 +54,4 @@ const mapStateToProps = state => ({
     en: en
 })
 
-export default connect(mapStateToProps, { events_all })(Useful)
+export default connect(mapStateToProps, { news })(Useful)

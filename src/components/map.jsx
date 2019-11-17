@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { find_region, change_region_id } from "./../redux/actions/actions";
+import { regions, region } from "./../redux/actions/actions";
 import { ru } from "./../lang/ru";
 import { uz } from "./../lang/uz";
 import { en } from "./../lang/en";
+import $ from "jquery";
 
 class MapUzbekistan extends Component {
+  componentDidMount(){
+    $('.main__map-box svg path').on('click',function(){
+      $(this).siblings().removeClass('active');
+      $(this).addClass('active');
+  });
+  }
   region = e => {
-    this.props.find_region(this.props.lang, e.target.id);
-    this.props.change_region_id(e.target.id);
+    this.props.region(parseInt(e.target.id));
   };
   componentDidMount() {
-    this.props.find_region(this.props.lang, this.props.region_id);
+    this.props.regions();
   }
   render() {
     var ln;
@@ -22,6 +28,11 @@ class MapUzbekistan extends Component {
     } else {
       ln = this.props.en;
     }
+
+    let reg = this.props.reg.filter(r => {
+      return parseInt(r.one_id) === this.props.r && r.lang === this.props.lang;
+    });
+    console.log(reg);
 
     return (
       <React.Fragment>
@@ -234,129 +245,101 @@ class MapUzbekistan extends Component {
         </div>
 
         <div className="col-6">
-          {/* {this.props.region.map(r=>
-                        <div className="map__content">
-                        
-                        <div className="map__img" style={{ backgroundImage: `url(/img/${r.img})` }}> </div>
-                        <div className="row mb-3">
-                            <div className="col-2"></div> <div className="col-10"><h2 className="map__title">{r.title}</h2></div>
-                        </div>
-                        <div className="row mb-3">
-                            <div className="col-2 text-right"><img src="/img/map/map.png" alt="" /></div> <div className="col-10"><div className="map__item"><div className="row"><div className="col-3"><span className="bold">{ln['Address']}:</span></div><div className="col-9">{r.address}</div></div></div></div>
-                        </div>
-
-                        <div className="row mb-3">
-                            <div className="col-2 text-right"><img src="/img/map/phone.png" alt="" /></div> <div className="col-10"><div className="map__item"><div className="row"><div className="col-3"><span className="bold">{ln['telephone']}:</span></div><div className="col-9">{r.phone}</div></div></div></div>
-                        </div>
-
-                        <div className="row mb-3">
-                            <div className="col-2 text-right"><img src="/img/map/pointer.png" alt="" /></div> <div className="col-10"><div className="map__item"><div className="row"><div className="col-3"><span className="bold">{ln['Reference point']}:</span></div><div className="col-9">{r.pointer}</div></div></div></div>
-                        </div>
-
-                        <div className="row mb-3">
-                            <div className="col-2 text-right"><img src="/img/map/clock.png" alt="" /></div> <div className="col-10"><div className="map__item"><div className="row"><div className="col-3"><span className="bold">{ln['Operation mode']}:
-</span></div><div className="col-9">{r.work}</div></div></div></div>
-                        </div>
-
-                        <div className="row mb-3">
-                            <div className="col-2 text-right"><img src="/img/map/dish.png" alt="" /></div> <div className="col-10"><div className="map__item"><div className="row"><div className="col-3"><span className="bold">{ln['Lunchtime']}:</span></div><div className="col-9">{r.dish}</div></div></div></div>
-                        </div>
-                    </div>
-                        )} */}
-
-          <div className="map__content">
-            <div
-              className="map__img"
-              style={{ backgroundImage: `url(/img/tashkent.png)` }}
-            >
-              {" "}
-            </div>
-            <div className="row mb-3">
-              <div className="col-2"></div>{" "}
-              <div className="col-10">
-                <h2 className="map__title"></h2>
+          {reg.map(r => (
+            <div className="map__content">
+              <div
+                className="map__img"
+                style={{ backgroundImage: `url(http://uz.orikzor.com/${r.photo})` }}
+              >
+                {" "}
               </div>
-            </div>
-            <div className="row mb-3">
-              <div className="col-2 text-right">
-                <img src="/img/map/map.png" alt="" />
-              </div>{" "}
-              <div className="col-10">
-                <div className="map__item">
-                  <div className="row">
-                    <div className="col-3">
-                      <span className="bold">{ln["Address"]}:</span>
+              <div className="row mb-3">
+                <div className="col-2"></div>{" "}
+                <div className="col-10">
+                  <h2 className="map__title">{r.name}</h2>
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-2 text-right">
+                  <img src="/img/map/map.png" alt="" />
+                </div>{" "}
+                <div className="col-10">
+                  <div className="map__item">
+                    <div className="row">
+                      <div className="col-3">
+                        <span className="bold">{ln["Address"]}:</span>
+                      </div>
+                      <div className="col-9">{r.address}</div>
                     </div>
-                    <div className="col-9">Узбекистан, ТАШКЕНТ, Мирзо-Улугбекский район, ул. Сайрам, 5-й проезд, 15-дом</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row mb-3">
+                <div className="col-2 text-right">
+                  <img src="/img/map/phone.png" alt="" />
+                </div>{" "}
+                <div className="col-10">
+                  <div className="map__item">
+                    <div className="row">
+                      <div className="col-3">
+                        <span className="bold">{ln["telephone"]}:</span>
+                      </div>
+                      <div className="col-9">{r.phone}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row mb-3">
+                <div className="col-2 text-right">
+                  <img src="/img/map/pointer.png" alt="" />
+                </div>{" "}
+                <div className="col-10">
+                  <div className="map__item">
+                    <div className="row">
+                      <div className="col-3">
+                        <span className="bold">{ln["Reference point"]}:</span>
+                      </div>
+                      <div className="col-9">{r.orientir}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row mb-3">
+                <div className="col-2 text-right">
+                  <img src="/img/map/clock.png" alt="" />
+                </div>{" "}
+                <div className="col-10">
+                  <div className="map__item">
+                    <div className="row">
+                      <div className="col-3">
+                        <span className="bold">{ln["Operation mode"]}:</span>
+                      </div>
+                      <div className="col-9">{r.work_hour}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row mb-3">
+                <div className="col-2 text-right">
+                  <img src="/img/map/dish.png" alt="" />
+                </div>{" "}
+                <div className="col-10">
+                  <div className="map__item">
+                    <div className="row">
+                      <div className="col-3">
+                        <span className="bold">{ln["Lunchtime"]}:</span>
+                      </div>
+                      <div className="col-9">{r.dinner}</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div className="row mb-3">
-              <div className="col-2 text-right">
-                <img src="/img/map/phone.png" alt="" />
-              </div>{" "}
-              <div className="col-10">
-                <div className="map__item">
-                  <div className="row">
-                    <div className="col-3">
-                      <span className="bold">{ln["telephone"]}:</span>
-                    </div>
-                    <div className="col-9">+998 71 268 - 38 - 88</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="row mb-3">
-              <div className="col-2 text-right">
-                <img src="/img/map/pointer.png" alt="" />
-              </div>{" "}
-              <div className="col-10">
-                <div className="map__item">
-                  <div className="row">
-                    <div className="col-3">
-                      <span className="bold">{ln["Reference point"]}:</span>
-                    </div>
-                    <div className="col-9">78.88.65.12.35.88.57.22.33.45.78</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="row mb-3">
-              <div className="col-2 text-right">
-                <img src="/img/map/clock.png" alt="" />
-              </div>{" "}
-              <div className="col-10">
-                <div className="map__item">
-                  <div className="row">
-                    <div className="col-3">
-                      <span className="bold">{ln["Operation mode"]}:</span>
-                    </div>
-                    <div className="col-9">c 08:00 до 18:00</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="row mb-3">
-              <div className="col-2 text-right">
-                <img src="/img/map/dish.png" alt="" />
-              </div>{" "}
-              <div className="col-10">
-                <div className="map__item">
-                  <div className="row">
-                    <div className="col-3">
-                      <span className="bold">{ln["Lunchtime"]}:</span>
-                    </div>
-                    <div className="col-9">08:00 до 18:00</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </React.Fragment>
     );
@@ -365,13 +348,13 @@ class MapUzbekistan extends Component {
 
 const mapStateToProps = state => ({
   lang: state.lang.lang,
-  region: state.region.region,
-  region_id: state.region.id,
+  reg: state.regions.regions,
+  r: state.regions.region,
   ru: ru,
   uz: uz,
   en: en
 });
 export default connect(
   mapStateToProps,
-  { find_region, change_region_id }
+  { regions, region }
 )(MapUzbekistan);

@@ -5,8 +5,10 @@ import {connect} from 'react-redux';
 import {ru} from './../../lang/ru';
 import {uz} from './../../lang/uz';
 import {en} from './../../lang/en';
+import {oz} from './../../lang/oz';
 
  class Footer extends Component {
+ 
     render() {
         var ln;
         if (this.props.lang == 'ru') {
@@ -14,6 +16,8 @@ import {en} from './../../lang/en';
         }
         else if (this.props.lang == 'uz') {
             ln = this.props.uz;
+        } else if (this.props.lang == 'oz') {
+            ln = this.props.oz;
         } else {
             ln = this.props.en;
         }
@@ -150,6 +154,7 @@ const mapStateToProps = state =>({
     lang:state.lang.lang,
     ru:ru,
     uz:uz,
-    en:en
+    en:en,
+    oz:oz
 });
 export default connect(mapStateToProps)(Footer)

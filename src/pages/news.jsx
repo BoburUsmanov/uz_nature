@@ -2,15 +2,19 @@ import React, { Component } from "react";
 import Title from "../components/common/title";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { events_all } from "./../redux/actions/actions";
+import { news } from "./../redux/actions/actions";
 import Sidebar from "../components/common/sidebar";
 import Useful from "../components/common/useful";
 
 class News extends Component {
   componentDidMount() {
-    this.props.events_all("ru");
+    this.props.news();
   }
+
   render() {
+    let newws = this.props.newss.filter(n=>{
+      return n.lang === this.props.lang
+    });
     return (
       <div className="news general__container">
         <div className="container-fluid">
@@ -43,163 +47,23 @@ class News extends Component {
                           </ul>
                         </div>
 
-                        {/* {this.props.news.map(n =>
-                                                    <div className="col-6">
-                                                        <div className="news__item">
-                                                            <span className="news__date">14.06.2019 <span className="fa fa-eye"></span>{n.views}</span>
-                                                            <img src={"http://uz.orikzor.com/" + n.photo} alt="" />
-                                                            <h2 className="news__title">
-                                                                <Link to={'/news/' + n.id}>{n.name}</Link>
-                                                            </h2>
-                                                        </div>
-                                                    </div>
-                                                )} */}
-
-                        <div className="col-6">
-                          <div className="news__item">
-                            <span className="news__date">
-                              14.06.2019 <span className="fa fa-eye"></span>
-                            </span>
-                            <img src="/img/news/news1.png" />
-                            <h2 className="news__title">
-                              <Link>
-                                В Госкомэкологии Республики Узбекистан проведен
-                                Круглый стол{" "}
-                              </Link>
-                            </h2>
-                            <p className="news__text">
-                              В соответствии с постановлением Президента
-                              Республики Узбекистан от 18 мая 2018 года ПП-3730
-                              «О мерах по дальнейшему совершенствованию системы
-                              обращения с бытовыми отходами» предусмотрено
-                              запретить с 1 января 2019: • бесплатную выдачу
-                              пакетов из полимерной пленки, включение их
-                              стоимости в стоимость реализуемого на территории{" "}
-                            </p>
+                        {newws.map(n => (
+                          <div className="col-6">
+                            <div className="news__item">
+                              <span className="news__date">
+                              {n.c_d+'.'+n.c_m+'.'+n.c_y} <span className="fa fa-eye"></span>
+                                {n.views}
+                              </span>
+                              <img
+                                src={"http://uz.orikzor.com/" + n.photo}
+                                alt=""
+                              />
+                              <h2 className="news__title">
+                                <Link to={"/news/" + n.one_id}>{n.name}</Link>
+                              </h2>
+                            </div>
                           </div>
-                        </div>
-
-                        <div className="col-6">
-                          <div className="news__item">
-                            <span className="news__date">
-                              14.06.2019 <span className="fa fa-eye"></span>
-                            </span>
-                            <img src="/img/news/news2.png" />
-                            <h2 className="news__title">
-                              <Link>
-                                В Госкомэкологии Республики Узбекистан проведен
-                                Круглый стол{" "}
-                              </Link>
-                            </h2>
-                            <p className="news__text">
-                              В соответствии с постановлением Президента
-                              Республики Узбекистан от 18 мая 2018 года ПП-3730
-                              «О мерах по дальнейшему совершенствованию системы
-                              обращения с бытовыми отходами» предусмотрено
-                              запретить с 1 января 2019: • бесплатную выдачу
-                              пакетов из полимерной пленки, включение их
-                              стоимости в стоимость реализуемого на территории{" "}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="col-6">
-                          <div className="news__item">
-                            <span className="news__date">
-                              14.06.2019 <span className="fa fa-eye"></span>
-                            </span>
-                            <img src="/img/news/news3.png" />
-                            <h2 className="news__title">
-                              <Link>
-                                В Госкомэкологии Республики Узбекистан проведен
-                                Круглый стол{" "}
-                              </Link>
-                            </h2>
-                            <p className="news__text">
-                              В соответствии с постановлением Президента
-                              Республики Узбекистан от 18 мая 2018 года ПП-3730
-                              «О мерах по дальнейшему совершенствованию системы
-                              обращения с бытовыми отходами» предусмотрено
-                              запретить с 1 января 2019: • бесплатную выдачу
-                              пакетов из полимерной пленки, включение их
-                              стоимости в стоимость реализуемого на территории{" "}
-                            </p>
-                          </div>
-                        </div>
-
-                        
-                        <div className="col-6">
-                          <div className="news__item">
-                            <span className="news__date">
-                              14.06.2019 <span className="fa fa-eye"></span>
-                            </span>
-                            <img src="/img/news/news4.png" />
-                            <h2 className="news__title">
-                              <Link>
-                                В Госкомэкологии Республики Узбекистан проведен
-                                Круглый стол{" "}
-                              </Link>
-                            </h2>
-                            <p className="news__text">
-                              В соответствии с постановлением Президента
-                              Республики Узбекистан от 18 мая 2018 года ПП-3730
-                              «О мерах по дальнейшему совершенствованию системы
-                              обращения с бытовыми отходами» предусмотрено
-                              запретить с 1 января 2019: • бесплатную выдачу
-                              пакетов из полимерной пленки, включение их
-                              стоимости в стоимость реализуемого на территории{" "}
-                            </p>
-                          </div>
-                        </div>
-
-                        
-                        <div className="col-6">
-                          <div className="news__item">
-                            <span className="news__date">
-                              14.06.2019 <span className="fa fa-eye"></span>
-                            </span>
-                            <img src="/img/news/news5.png" />
-                            <h2 className="news__title">
-                              <Link>
-                                В Госкомэкологии Республики Узбекистан проведен
-                                Круглый стол{" "}
-                              </Link>
-                            </h2>
-                            <p className="news__text">
-                              В соответствии с постановлением Президента
-                              Республики Узбекистан от 18 мая 2018 года ПП-3730
-                              «О мерах по дальнейшему совершенствованию системы
-                              обращения с бытовыми отходами» предусмотрено
-                              запретить с 1 января 2019: • бесплатную выдачу
-                              пакетов из полимерной пленки, включение их
-                              стоимости в стоимость реализуемого на территории{" "}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="col-6">
-                          <div className="news__item">
-                            <span className="news__date">
-                              14.06.2019 <span className="fa fa-eye"></span>
-                            </span>
-                            <img src="/img/news/news6.png" />
-                            <h2 className="news__title">
-                              <Link>
-                                В Госкомэкологии Республики Узбекистан проведен
-                                Круглый стол{" "}
-                              </Link>
-                            </h2>
-                            <p className="news__text">
-                              В соответствии с постановлением Президента
-                              Республики Узбекистан от 18 мая 2018 года ПП-3730
-                              «О мерах по дальнейшему совершенствованию системы
-                              обращения с бытовыми отходами» предусмотрено
-                              запретить с 1 января 2019: • бесплатную выдачу
-                              пакетов из полимерной пленки, включение их
-                              стоимости в стоимость реализуемого на территории{" "}
-                            </p>
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -251,9 +115,9 @@ class News extends Component {
 
 const mapStateToProps = state => ({
   lang: state.lang.lang,
-  news: state.events.events
+  newss: state.news.news
 });
 export default connect(
   mapStateToProps,
-  { events_all }
+  { news }
 )(News);

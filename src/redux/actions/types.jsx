@@ -1,6 +1,12 @@
-export const ALL__EVENTS = "ALL__EVENTS";
-export const SINGLE__EVENT = "SINGLE__EVENT";
 export const CHANGE__LANGUAGE = "CHANGE__LANGUAGE";
-export const FIND__REGION = "FIND__REGION";
-export const CHANGE__REGION__ID = "CHANGE__REGION__ID";
+export const NEWSS = "NEWSS";
+export const NEWSS__PHOTO = "NEWSS__PHOTO";
+export const EVENTS = "EVENTS";
+export const REGIONS = "REGIONS";
+export const REGION = "REGION";
 export const COMITET = "COMITET";
+export const ACTIVITIES = "ACTIVITIES";
+export const SECTIONS = "SECTIONS";
+export const ACTIVITIES__PHOTO = "ACTIVITIES__PHOTO";
+export const LEGALS = "LEGALS";
+export const LEGALSPHOTO = "LEGALSPHOTO";

@@ -4,8 +4,35 @@ import { connect } from "react-redux";
 import { ru } from "./../../lang/ru";
 import { en } from "./../../lang/en";
 import { uz } from "./../../lang/uz";
+import { legals } from "./../../redux/actions/actions";
+import $ from "jquery";
 
 class Menu extends Component {
+  componentDidMount() {
+    this.props.legals();
+
+    $(".faq__item").on("click", function() {
+      $(this)
+        .siblings()
+        .removeClass("active")
+        .find(".faq__content")
+        .slideUp();
+      $(this)
+        .siblings()
+        .find(".fa")
+        .removeClass("fa-chevron-up")
+        .addClass("fa-chevron-down");
+
+      $(this)
+        .find(".faq__content")
+        .slideDown();
+      $(this)
+        .find(".fa")
+        .removeClass("fa-chevron-down")
+        .addClass("fa-chevron-up");
+      $(this).addClass("active");
+    });
+  }
   render() {
     var ln;
     if (this.props.lang == "ru") {
@@ -16,10 +43,15 @@ class Menu extends Component {
       ln = this.props.en;
     }
 
+    let legal_menus = this.props.legal.filter(n => {
+      return (
+        n.name !== null  && n.lang === this.props.lang
+      );
+    });
     return (
       <ul className="header__menu d-flex justify-content-between">
         <li>
-          <NavLink to="/news">
+          <NavLink>
             {ln["info"]}
             <i className="fa fa-caret-down" />
           </NavLink>
@@ -37,30 +69,30 @@ class Menu extends Component {
               <Link to="/ads">Объявления</Link>
             </li>
             <li>
-              <Link to="/news">Тендеры</Link>
+              <Link to="/tenders">Тендеры</Link>
             </li>
             <li>
-              <Link to="/news">Эконадзор</Link>
+              <Link to="/economics">Эконадзор</Link>
             </li>
             <li>
-              <Link to="/news">Проекты</Link>
+              <Link to="/projects">Проекты</Link>
             </li>
             <li>
-              <Link to="/news">
+              <Link>
                 Пресса <i className="fa fa-caret-right" />
               </Link>
               <ul className="sub">
                 <li>
-                  <Link to="">Пресс релизы</Link>
+                  <Link to="/press">Пресс релизы</Link>
                 </li>
                 <li>
-                  <Link to="">Порядок аккредитации</Link>
+                  <Link to="/press">Порядок аккредитации</Link>
                 </li>
                 <li>
-                  <Link to="">Интервью и статьи</Link>
+                  <Link to="/interviews">Интервью и статьи</Link>
                 </li>
                 <li>
-                  <Link to="">Архив</Link>
+                  <Link to="/archive">Архив</Link>
                 </li>
               </ul>
             </li>
@@ -76,18 +108,18 @@ class Menu extends Component {
                   </Link>
                   <ul>
                     <li>
-                      <Link to="">ЦА</Link>
+                      <Link to="/vacancy">ЦА</Link>
                     </li>
                     <li>
-                      <Link to="">Территориальные</Link>
+                      <Link to="/jobs">Территориальные</Link>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <Link to="">Требования</Link>
+                  <Link to="/requirements">Требования</Link>
                 </li>
                 <li>
-                  <Link to="">Стажировка</Link>
+                  <Link to="/internship">Стажировка</Link>
                 </li>
               </ul>
             </li>
@@ -98,13 +130,13 @@ class Menu extends Component {
 
               <ul className="sub">
                 <li>
-                  <Link to="">Государственные услуги</Link>
+                  <Link to="/government">Государственные услуги</Link>
                 </li>
                 <li>
-                  <Link to="">Формы документов</Link>
+                  <Link to="/forms">Формы документов</Link>
                 </li>
                 <li>
-                  <Link to="">Экологический калькулятор</Link>
+                  <Link to="/calculator">Экологический калькулятор</Link>
                 </li>
               </ul>
             </li>
@@ -117,10 +149,10 @@ class Menu extends Component {
               </Link>
               <ul className="sub">
                 <li>
-                  <Link to="">Фото</Link>
+                  <Link to="/photogallery">Фото</Link>
                 </li>
                 <li>
-                  <Link to="">Видео</Link>
+                  <Link to="/videogallery">Видео</Link>
                 </li>
                 <li>
                   <Link to="">Презентации</Link>
@@ -131,7 +163,7 @@ class Menu extends Component {
         </li>
 
         <li>
-          <NavLink to="">
+          <NavLink>
             {ln["about"]}
             <i className="fa fa-caret-down" />
           </NavLink>
@@ -143,9 +175,14 @@ class Menu extends Component {
               <Link to="/territorial"> Территориальные органы</Link>
             </li>
             <li>
-              <Link to="/legalactivity"> Правовые основы деятельности</Link>
+              <Link to="/leadership"> Руководство</Link>
             </li>
-            <li>
+            {legal_menus.map(l => (
+              <li>
+                <Link to={'/legalactivity/'+l.one_id}>{l.name}</Link>
+              </li>
+            ))}
+            {/* <li>
               <Link to="/history"> История комитета</Link>
             </li>
             <li>
@@ -162,21 +199,85 @@ class Menu extends Component {
             </li>
             <li>
               <Link to="/anticorruption"> Противодействия коррупции</Link>
+            </li> */}
+          </ul>
+        </li>
+
+        <li>
+          <NavLink>
+            {ln["activity"]}
+            <i className="fa fa-caret-down" />
+          </NavLink>
+          <ul className="submenu">
+            <li>
+              <Link to="/activity/1">
+                {" "}
+                {ln["Atmospheric air and ozone layer"]}
+              </Link>
+            </li>
+            <li>
+              <Link to="/activity/2">{ln["Water resources"]}</Link>
+            </li>
+            <li>
+              <Link to="/activity/3">{ln["Land resources and subsoil"]}</Link>
+            </li>
+
+            <li>
+              <Link to="/activity/4">{ln["Waste management"]}</Link>
+            </li>
+
+            <li>
+              <Link to="/activity/5">{ln["Biodiversity"]} </Link>
+            </li>
+
+            <li>
+              <Link to="/activity/6">{ln["OPT"]} </Link>
+            </li>
+
+            <li>
+              <Link to="/activity/7">{ln["Environmental monitoring"]} </Link>
+            </li>
+
+            <li>
+              <Link to="/activity/8"> {ln["State eco supervision"]} </Link>
+            </li>
+
+            <li>
+              <Link to="/activity/9"> {ln["State expertise"]} </Link>
+            </li>
+
+            <li>
+              <Link to="/activity/10">
+                {" "}
+                {ln["Environmental certification"]}{" "}
+              </Link>
+            </li>
+            <li>
+              <Link to="/activity/11"> {ln["Eco energy"]}</Link>
+            </li>
+
+            <li>
+              <Link to="/activity/12">{ln["Education"]}</Link>
+            </li>
+
+            <li>
+              <Link to="/activity/13">{ln["Scientific activity"]}</Link>
+            </li>
+
+            <li>
+              <Link to="/activity/14">{ln["Fund"]}</Link>
+            </li>
+
+            <li>
+              <Link to="/activity/15">{ln["International"]}</Link>
             </li>
           </ul>
         </li>
 
         <li>
-          <NavLink to="/activity">
-            {ln["activity"]}
-            <i className="fa fa-caret-down" />
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink to="/documents">
+          <NavLink to="/forms">
             {ln["documents"]}
-            <i className="fa fa-caret-down" />
+            {/* <i className="fa fa-caret-down" /> */}
           </NavLink>
         </li>
       </ul>
@@ -186,9 +287,10 @@ class Menu extends Component {
 
 const mapStateToProps = state => ({
   lang: state.lang.lang,
+  legal: state.legals.legals,
   ru: ru,
   en: en,
   uz: uz
 });
 
-export default connect(mapStateToProps)(Menu);
+export default connect(mapStateToProps, { legals })(Menu);

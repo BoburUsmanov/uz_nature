@@ -3,13 +3,13 @@ import Sidebar from '../components/common/sidebar';
 import Useful from '../components/common/useful';
 import { Link } from 'react-router-dom';
 import Title from '../components/common/title';
-import { events_all } from './../redux/actions/actions';
+import { events } from './../redux/actions/actions';
 import { connect } from 'react-redux';
 
 class Announcement extends Component {
 
     componentDidMount() {
-        this.props.events_all('ru')
+        this.props.events()
     }
 
     render() {
@@ -125,4 +125,4 @@ const mapStateToProps = state => ({
     lang: state.lang.lang,
     ads: state.events.events
 })
-export default connect(mapStateToProps, { events_all })(Announcement);
+export default connect(mapStateToProps, { events })(Announcement);

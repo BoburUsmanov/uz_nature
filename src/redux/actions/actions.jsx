@@ -1,28 +1,10 @@
-import { ALL__EVENTS, CHANGE__LANGUAGE, FIND__REGION, CHANGE__REGION__ID, SINGLE__EVENT, COMITET } from './types';
+import {  CHANGE__LANGUAGE, 
+    REGIONS, REGION,  COMITET,ACTIVITIES,SECTIONS,
+     ACTIVITIES__PHOTO, NEWSS, EVENTS, LEGALS,LEGALSPHOTO } from './types';
 import Axios from 'axios';
 
-export const events_all = (text) => dispatch => {
-    Axios.get(`http://uz.orikzor.com/events`).then(response =>
-        dispatch({
-            type: ALL__EVENTS,
-            payload: response.data
-        }));
-}
-export const find_event = (lang, id) => dispatch => {
-    Axios.get(`http://localhost/${lang}/news/${id}`).then(response =>
-        dispatch({
-            type: SINGLE__EVENT,
-            payload: response.data
-        }));
-}
 
-export const change_region_id = (text) => dispatch => {
-    dispatch({
-        type: CHANGE__REGION__ID,
-        payload: text
-    })
-}
-
+// change language
 export const change_language = (text) => dispatch => {
     dispatch({
         type: CHANGE__LANGUAGE,
@@ -30,14 +12,74 @@ export const change_language = (text) => dispatch => {
     })
 }
 
-export const find_region = (lang, id) => dispatch => {
-    Axios.get(`http://localhost/${lang}/regions/${id}`).then(response =>
+
+// retrieve all news
+export const news = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/newws`).then(response =>{
+        
         dispatch({
-            type: FIND__REGION,
+            type: NEWSS,
+            payload: response.data.data
+        })
+        // console.log(response.data.data)
+    })
+}
+
+
+// retrieve all events
+export const events = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/events`).then(response =>{
+        
+        dispatch({
+            type: EVENTS,
+            payload: response.data
+        })
+        // console.log(response.data.data)
+    })
+}
+
+// retrieve all regions
+export const regions = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/territories`).then(response =>
+        dispatch({
+            type: REGIONS,
             payload: response.data
         }));
 }
 
+// single region
+export const region = (text) => dispatch => {
+    dispatch({
+        type: REGION,
+        payload: text
+    })
+}
+
+
+// retrieve legals
+
+export const legals = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/legals`).then(response =>{
+        dispatch({
+            type: LEGALS,
+            payload: response.data.data
+        })
+    console.log(response.data.data)
+    });
+    
+}
+
+export const legalsphoto = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/legals`).then(response =>{
+        dispatch({
+            type: LEGALSPHOTO,
+            payload: response.data.dataphoto
+        })
+    });
+    
+}
+
+// retrieve comitet
 export const comitet = () => dispatch => {
     Axios.get(`http://uz.orikzor.com/committees`).then(response =>
         dispatch({
@@ -45,3 +87,36 @@ export const comitet = () => dispatch => {
             payload: response.data
         }));
 }
+
+export const activities = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/activities`).then(response =>{
+        dispatch({
+            type: ACTIVITIES,
+            payload: response.data.data
+            
+        })
+        console.log(response.data)
+     } )
+}
+
+export const sections = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/acts`).then(response =>{
+        dispatch({
+            type: SECTIONS,
+            payload: response.data.data
+            
+        })
+     } )
+}
+
+export const activities_photos = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/activities`).then(response =>{
+        dispatch({
+            type: ACTIVITIES__PHOTO,
+            payload: response.data.dataphoto
+            
+        })
+        console.log(response.data.dataphoto)
+     } )
+}
+
