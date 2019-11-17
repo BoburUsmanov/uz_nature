@@ -1,6 +1,6 @@
 import {  CHANGE__LANGUAGE, 
     REGIONS, REGION,  COMITET,ACTIVITIES,SECTIONS,
-     ACTIVITIES__PHOTO, NEWSS, EVENTS, LEGALS,LEGALSPHOTO } from './types';
+     ACTIVITIES__PHOTO, NEWSS, EVENTS, LEGALS,LEGALSPHOTO, ADS,ADSPHOTO,TENDERS, TENDERSPHOTO, } from './types';
 import Axios from 'axios';
 
 
@@ -120,3 +120,51 @@ export const activities_photos = () => dispatch => {
      } )
 }
 
+
+export const ads = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/ads`).then(response =>{
+        dispatch({
+            type: ADS,
+            payload: response.data.data
+            
+        })
+        // console.log(response.data.dataphoto)
+     } )
+}
+
+
+export const adsphoto = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/ads`).then(response =>{
+        dispatch({
+            type: ADSPHOTO,
+            payload: response.data.dataphoto
+            
+        })
+        // console.log(response.data.dataphoto)
+     } )
+}
+
+
+
+export const tenders = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/tenders`).then(response =>{
+        dispatch({
+            type: TENDERS,
+            payload: response.data.data
+            
+        })
+        // console.log(response.data.dataphoto)
+     } )
+}
+
+
+export const tendersphoto = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/tenders`).then(response =>{
+        dispatch({
+            type: TENDERSPHOTO,
+            payload: response.data.dataphoto
+            
+        })
+        // console.log(response.data.dataphoto)
+     } )
+}

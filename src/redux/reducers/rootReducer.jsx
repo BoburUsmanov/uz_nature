@@ -8,6 +8,8 @@ import newsReducer from './newsReducer';
 import sectionsReducer from './sectionsReducer';
 import legalsReducer from './legalsReducer';
 import legalsphotoReducer from './legalsphotoReducer';
+import adsReducer from './adsReducer';
+import tendersReducer from './tendersReducer';
 
 export default combineReducers({
    news: newsReducer,
@@ -18,5 +20,8 @@ export default combineReducers({
    activities:activitiesReducer,
    sections: sectionsReducer,
    legals: legalsReducer,
-   legalsphoto: legalsphotoReducer
+   legalsphoto: legalsphotoReducer,
+   ads: adsReducer,
+   // adsphoto: adsReducer,
+    tenders: tendersReducer,
 });

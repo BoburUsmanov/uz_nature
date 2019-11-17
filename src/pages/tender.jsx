@@ -1,11 +1,20 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import Sidebar from "../components/common/sidebar";
-import { Link } from "react-router-dom";
 import Title from "../components/common/title";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { tenders } from "./../redux/actions/actions";
+import Sidebar from "../components/common/sidebar";
+import Useful from "../components/common/useful";
 
 class Tender extends Component {
+    componentDidMount() {
+        this.props.tenders()
+    }
+
   render() {
+      let t = this.props.tender.filter(n=>{
+          return n.lang === this.props.lang
+      });
     return (
       <div className="tender general__container">
         <div className="container-fluid">
@@ -28,7 +37,9 @@ class Tender extends Component {
                   </div>
 
                   <div className="col-12">
-                    <div className="row no-gutters tender__item">
+                      {t.map(a => (
+
+                      <div className="row no-gutters tender__item">
                       <div
                         className="col-4 tender__item-img"
                         style={{ backgroundImage: "url(/img/tender/1.png)" }}
@@ -40,109 +51,14 @@ class Tender extends Component {
                         </span>
                       </div>
                       <div className="col-8 tender__item-content">
-                        <p className="tender__item-text">
-                          Государственный комитет Республики Узбекистан по
-                          экологии и охране окружающей среды объявляет конкурс
-                          по отбору поставщика на оказание услуг по обслуживанию
-                          здания Заказчика, находящегося по адресу: Ташкент,
-                          Мирзо-Улугбекский район, ул. Сайрам, 5-й проезд,
-                          15-дом, а именно ....
-                        </p>
+                        <p className="tender__item-text">{a.name}</p>
                         <span className="eye">
                           <i className="fa fa-eye mr-1"></i> 154
                         </span>
-                        <a href="#" className="more">
-                          Подробнее <i className="fa fa-angle-right ml-1"></i>
-                        </a>
+                          <Link to={'/tenders/' + a.one_id} className="more">Подробнее <i className="fa fa-angle-right"></i></Link>
                       </div>
                     </div>
-
-                    <div className="row no-gutters tender__item">
-                      <div
-                        className="col-4 tender__item-img"
-                        style={{ backgroundImage: "url(/img/tender/2.png)" }}
-                      >
-                        <span className="tender__item-day">
-                          <span className="day">26</span>
-                          <span className="month">июня </span>
-                          <span className="year">2019 г.</span>
-                        </span>
-                      </div>
-                      <div className="col-8 tender__item-content">
-                        <p className="tender__item-text">
-                          Государственный комитет Республики Узбекистан по
-                          экологии и охране окружающей среды объявляет конкурс
-                          по отбору поставщика на оказание услуг по обслуживанию
-                          здания Заказчика, находящегося по адресу: Ташкент,
-                          Мирзо-Улугбекский район, ул. Сайрам, 5-й проезд,
-                          15-дом, а именно ....
-                        </p>
-                        <span className="eye">
-                          <i className="fa fa-eye mr-1"></i> 154
-                        </span>
-                        <a href="#" className="more">
-                          Подробнее <i className="fa fa-angle-right ml-1"></i>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="row no-gutters tender__item">
-                      <div
-                        className="col-4 tender__item-img"
-                        style={{ backgroundImage: "url(/img/tender/3.png)" }}
-                      >
-                        <span className="tender__item-day">
-                          <span className="day">26</span>
-                          <span className="month">июня </span>
-                          <span className="year">2019 г.</span>
-                        </span>
-                      </div>
-                      <div className="col-8 tender__item-content">
-                        <p className="tender__item-text">
-                          Государственный комитет Республики Узбекистан по
-                          экологии и охране окружающей среды объявляет конкурс
-                          по отбору поставщика на оказание услуг по обслуживанию
-                          здания Заказчика, находящегося по адресу: Ташкент,
-                          Мирзо-Улугбекский район, ул. Сайрам, 5-й проезд,
-                          15-дом, а именно ....
-                        </p>
-                        <span className="eye">
-                          <i className="fa fa-eye mr-1"></i> 154
-                        </span>
-                        <a href="#" className="more">
-                          Подробнее <i className="fa fa-angle-right ml-1"></i>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="row no-gutters tender__item">
-                      <div
-                        className="col-4 tender__item-img"
-                        style={{ backgroundImage: "url(/img/tender/4.png)" }}
-                      >
-                        <span className="tender__item-day">
-                          <span className="day">26</span>
-                          <span className="month">июня </span>
-                          <span className="year">2019 г.</span>
-                        </span>
-                      </div>
-                      <div className="col-8 tender__item-content">
-                        <p className="tender__item-text">
-                          Государственный комитет Республики Узбекистан по
-                          экологии и охране окружающей среды объявляет конкурс
-                          по отбору поставщика на оказание услуг по обслуживанию
-                          здания Заказчика, находящегося по адресу: Ташкент,
-                          Мирзо-Улугбекский район, ул. Сайрам, 5-й проезд,
-                          15-дом, а именно ....
-                        </p>
-                        <span className="eye">
-                          <i className="fa fa-eye mr-1"></i> 154
-                        </span>
-                        <a href="#" className="more">
-                          Подробнее <i className="fa fa-angle-right ml-1"></i>
-                        </a>
-                      </div>
-                    </div>
+                          ))}
 
                     <div className="row">
                       <div className="col-12">
@@ -189,8 +105,7 @@ class Tender extends Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events.events,
-  lang: state.lang.lang
-});
-
-export default connect(mapStateToProps)(Tender);
+  lang: state.lang.lang,
+  tender: state.tenders.tenders
+})
+export default connect(mapStateToProps, { tenders })(Tender);

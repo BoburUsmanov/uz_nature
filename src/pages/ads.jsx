@@ -1,15 +1,35 @@
-import React, { Component } from 'react'
-import Sidebar from '../components/common/sidebar';
-import Useful from '../components/common/useful';
-import {Link} from 'react-router-dom';
-import { connect } from 'react-redux';
-import Title from '../components/common/title';
-
+import React, { Component } from "react";
+import Sidebar from "../components/common/sidebar";
+import { connect } from "react-redux";
+import Title from "../components/common/title";
+import { Link } from "react-router-dom";
+import Useful from "../components/common/useful";
+import { ads } from "./../redux/actions/actions";
+import ReactHtmlParser, {
+    processNodes,
+    convertNodeToElement,
+    htmlparser2
+  } from "react-html-parser";
+  
  class Ads extends Component {
     componentDidMount() {
-       
+      
+          this.props.ads();
     }
     render() {
+        let a = this.props.adds.find(n => {
+            return (
+              n.one_id === this.props.match.params.id && n.lang === this.props.lang
+            );
+          });
+          let others = this.props.adds.filter(n => {
+            return (
+              n.one_id !== this.props.match.params.id && n.lang === this.props.lang
+            );
+          });
+      
+         
+      
         return (
            <div className="general__container news">
                <div className="container-fluid">
@@ -28,22 +48,22 @@ import Title from '../components/common/title';
                                         </ul>
                                     </div>
 
-                                   {this.props.ads.map(a=>
+                                   
                                     <div className="col-12">
-                                    <Title title={a.name}/>
+                                    <Title title={a.name ? a.name : null} />
                                     <div className="text-right">
                                         <span className="date d-flex justify-content-end mr-5 my-3">
-                                            <div className="day"><span className="fa fa-calendar"></span>13.08.2019</div>
+                                            <div className="day"><span className="fa fa-calendar"></span>{a.c_d}.{a.c_m}.{a.c_y}</div>
                                             <div className="eye">
-                                                <span className="fa fa-eye"></span> 154
+                                                <span className="fa fa-eye"></span> {a.view}
                                             </div>
                                         </span>
                                     </div>
                                     <p className="ads__single-text">
-                                        {a.description}
+                                    {ReactHtmlParser(a.description)}
                                     </p>
                                 </div>
-                                   )}
+                                   
 
                                 </div>
                             </div>
@@ -65,6 +85,6 @@ import Title from '../components/common/title';
 
 const mapStateToProps = state => ({
     lang: state.lang.lang,
-    ads: state.events.event
+    adds: state.ads.ads
 })
-export default connect(mapStateToProps)(Ads)
+export default connect(mapStateToProps, {ads})(Ads)

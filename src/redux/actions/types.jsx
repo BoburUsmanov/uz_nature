@@ -10,3 +10,7 @@ export const SECTIONS = "SECTIONS";
 export const ACTIVITIES__PHOTO = "ACTIVITIES__PHOTO";
 export const LEGALS = "LEGALS";
 export const LEGALSPHOTO = "LEGALSPHOTO";
+export const ADS = "ADS";
+export const ADSPHOTO = "ADSPHOTO";
+export const TENDERS= "TENDERS";
+export const TENDERSPHOTO= "TENDERSPHOTO";

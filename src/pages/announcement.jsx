@@ -1,19 +1,24 @@
-import React, { Component } from 'react'
-import Sidebar from '../components/common/sidebar';
-import Useful from '../components/common/useful';
-import { Link } from 'react-router-dom';
-import Title from '../components/common/title';
-import { events } from './../redux/actions/actions';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import Title from "../components/common/title";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { ads } from "./../redux/actions/actions";
+import Sidebar from "../components/common/sidebar";
+import Useful from "../components/common/useful";
+
+
 
 class Announcement extends Component {
 
     componentDidMount() {
-        this.props.events()
+        this.props.ads()
     }
 
     render() {
-        return (
+        let adss = this.props.adds.filter(n=>{
+            return n.lang === this.props.lang
+          });
+             return (
             <div className="general__container news">
                 <div className="container-fluid">
                     <div className="row">
@@ -38,8 +43,7 @@ class Announcement extends Component {
                                 </div>
 
                                 <div className="row ads__content">
-                                    {
-                                        this.props.ads ? this.props.ads.map(a =>
+                                    {adss.map(a => (
                                             <div className="col-6">
                                                 <div className="ads__item">
                                                     <div className="date d-flex">
@@ -54,13 +58,12 @@ class Announcement extends Component {
 
                                                         </p>
 
-                                                        <Link to={'/ads/' + a.id} className="link">Подробнее <i className="fa fa-angle-right"></i></Link>
+                                                        <Link to={'/ads/' + a.one_id} className="link">Подробнее <i className="fa fa-angle-right"></i></Link>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                        ) : "no ads"
-                                    }
+                                        ))}
                                 </div>
 
                                 <div className="row">
@@ -123,6 +126,6 @@ class Announcement extends Component {
 
 const mapStateToProps = state => ({
     lang: state.lang.lang,
-    ads: state.events.events
+    adds: state.ads.ads
 })
-export default connect(mapStateToProps, { events })(Announcement);
+export default connect(mapStateToProps, { ads })(Announcement);
