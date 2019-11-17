@@ -9,7 +9,12 @@ export default class Juridical extends Component {
     super(props);
     this.state = {
       subject: "",
-      family: "",
+      ownership: "",
+      activity: "",
+      inn:"",
+      okonh:"",
+      category:"",
+      theme:"",
       phone: "",
       email: "",
       address: "",
@@ -17,16 +22,22 @@ export default class Juridical extends Component {
       loading: true
     };
 
-    // this.handleChangeSubject = this.handleChangeSubject.bind(this);
+    this.handleChangeSubject = this.handleChangeSubject.bind(this);
     this.handleChangePhone = this.handleChangePhone.bind(this);
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangeAddress = this.handleChangeAddress.bind(this);
     this.handleChangeMessage = this.handleChangeMessage.bind(this);
+    this.handleChangeOwnership = this.handleChangeOwnership.bind(this);
+    this.handleChangeActivity = this.handleChangeActivity.bind(this);
+    this.handleChangeInn = this.handleChangeInn.bind(this);
+    this.handleChangeOkonh = this.handleChangeOkonh.bind(this);
+    this.handleChangeCategory = this.handleChangeCategory.bind(this);
+    this.handleChangeTheme = this.handleChangeTheme.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangeName(event) {
-    this.setState({ name: event.target.value });
+  handleChangeSubject(event) {
+    this.setState({ subject: event.target.value });
   }
 
   handleChangePhone(event) {
@@ -41,10 +52,40 @@ export default class Juridical extends Component {
   handleChangeMessage(event) {
     this.setState({ message: event.target.value });
   }
+  handleChangeOwnership(event) {
+    this.setState({ ownership: event.target.value });
+  }
+  handleChangeActivity(event) {
+    this.setState({ activity: event.target.value });
+  }
+  handleChangeInn(event) {
+    this.setState({ inn: event.target.value });
+  }
+  handleChangeOkonh(event) {
+    this.setState({ okonh: event.target.value });
+  }
+  handleChangeCategory(event) {
+    this.setState({ category: event.target.value });
+  }
+  handleChangeTheme(event) {
+    this.setState({ theme: event.target.value });
+  }
   handleSubmit(event) {
     event.preventDefault();
-    Axios.get(`http://uz.orikzor.com/physicals?name=${this.state.name}&phone=${this.state.phone}&email=${this.state.email}&message=${this.state.message}`).then((response) => {
+    Axios.get(`http://uz.orikzor.com/juridicals?subject=${this.state.subject}&ownership=${this.state.ownership}&activity=${this.state.activity}&inn=${this.state.inn}&okonh=${this.state.okonh}&category=${this.state.category}&theme=${this.state.theme}&phone=${this.state.phone}&email=${this.state.email}&address=${this.state.address}&message=${this.state.message}`).then((response) => {
             console.log(response);
+            alert('Cообщение успешно отправлено');
+            this.setState({   subject: "",
+            ownership: "",
+            activity: "",
+            inn:"",
+            okonh:"",
+            category:"",
+            theme:"",
+            phone: "",
+            email: "",
+            address: "",
+            message: "", });
           }, (error) => {
             console.log(error); });
   }
@@ -63,13 +104,13 @@ export default class Juridical extends Component {
                         <Link to="/">Главная</Link>
                       </li>
                       <li>
-                        <Link to="/physical">Портал по обращением физических лиц</Link>
+                        <Link to="/physical">Портал по обращениям субъектов предпринимательстваЮридическое лицо</Link>
                       </li>
                     </ul>
                   </div>
 
                   <div className="col-12 mb-5">
-                    <Title title="Портал по обращением физических лиц" />
+                    <Title title="Портал по обращениям субъектов предпринимательстваЮридическое лицо" />
                   </div>
                 </div>
                 <div className="haspadding">
@@ -82,8 +123,8 @@ export default class Juridical extends Component {
                               <div className="form-group mb-5">
                                 <input
                                   type="text"
-                                  value={this.state.name}
-                                  onChange={this.handleChangeName}
+                                  value={this.state.subject}
+                                  onChange={this.handleChangeSubject}
                                   className="general__input"
                                   placeholder="Наименование субъекта предпринимательства"
                                 />
@@ -93,8 +134,8 @@ export default class Juridical extends Component {
                               <div className="form-group mb-5">
                                 <input
                                   type="text"
-                                  value={this.state.phone}
-                                  onChange={this.handleChangePhone}
+                                  value={this.state.ownership}
+                                  onChange={this.handleChangeOwnership}
                                   className="general__input"
                                   placeholder="Форма собственности"
                                 />
@@ -104,8 +145,8 @@ export default class Juridical extends Component {
                               <div className="form-group mb-5">
                                 <input
                                   type="text"
-                                  value={this.state.phone}
-                                  onChange={this.handleChangePhone}
+                                  value={this.state.activity}
+                                  onChange={this.handleChangeActivity}
                                   className="general__input"
                                   placeholder="Вид основной деятельности"
                                 />
@@ -116,8 +157,8 @@ export default class Juridical extends Component {
                               <div className="form-group mb-5">
                                 <input
                                   type="text"
-                                  value={this.state.email}
-                                  onChange={this.handleChangeEmail}
+                                  value={this.state.inn}
+                                  onChange={this.handleChangeInn}
                                   className="general__input"
                                   placeholder="ИНН"
                                 />
@@ -127,8 +168,8 @@ export default class Juridical extends Component {
                               <div className="form-group mb-5">
                                 <input
                                   type="text"
-                                  value={this.state.address}
-                                  onChange={this.handleChangeAddress}
+                                  value={this.state.okonh}
+                                  onChange={this.handleChangeOkonh}
                                   className="general__input"
                                   placeholder="ОКОНХ"
                                 />
@@ -160,8 +201,8 @@ export default class Juridical extends Component {
                               <div className="form-group mb-5">
                                 <input
                                   type="text"
-                                  value={this.state.email}
-                                  onChange={this.handleChangeEmail}
+                                  value={this.state.category}
+                                  onChange={this.handleChangeCategory}
                                   className="general__input"
                                   placeholder="Категория субъекта предпринимательской деятельности"
                                 />
@@ -171,8 +212,8 @@ export default class Juridical extends Component {
                               <div className="form-group mb-5">
                                 <input
                                   type="text"
-                                  value={this.state.email}
-                                  onChange={this.handleChangeEmail}
+                                  value={this.state.theme}
+                                  onChange={this.handleChangeTheme}
                                   className="general__input"
                                   placeholder="Тема обращения"
                                 />

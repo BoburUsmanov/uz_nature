@@ -44,6 +44,7 @@ import Photogallery from './pages/photogallery';
 import Videogallery from './pages/videogallery';
 import Physical from './pages/form';
 import Juridical from './pages/juridical';
+import Ask from './pages/ask';
 
 export default class App extends Component {
   render() {
@@ -79,7 +80,7 @@ export default class App extends Component {
             <Route exact path="/documents" component={Documents} />
             <Route exact path="/center" component={Center} />
             <Route exact path="/territorial" component={Territorial} />
-            <Route exact path="/tsingle" component={TerritorialSingle} />
+            <Route exact path="/tsingle/:id" component={TerritorialSingle} />
             <Route exact path="/legalactivity" component={Legalactivity} />
             <Route exact path="/legalactivity/:id" component={Legalactivity} />
             <Route exact path="/history" component={History} />
@@ -90,6 +91,7 @@ export default class App extends Component {
             <Route exact path="/anticorruption" component={Anticorruption} />
             <Route exact path="/physical" component={Physical} />
             <Route exact path="/juridical" component={Juridical} />
+            <Route exact path="/ask" component={Ask} />
             
           </Switch>
           <Footer />

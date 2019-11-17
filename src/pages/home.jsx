@@ -63,7 +63,7 @@ class Home extends Component {
                     </span>
                     <span className="col-10">{ln["feedback"]}</span>
                   </Link>
-                  <Link to="/" className="main__services-link row no-gutters">
+                  <Link to="/juridical" className="main__services-link row no-gutters">
                     <span className="col-2">
                       <img src="/img/main/people1.png" />
                     </span>
@@ -75,7 +75,7 @@ class Home extends Component {
                     </span>
                     <span className="col-10">{ln["For individuals"]}</span>
                   </Link>
-                  <Link to="/" className="main__services-link row no-gutters">
+                  <Link to="/ask" className="main__services-link row no-gutters">
                     <span className="col-2">
                       {" "}
                       <img src="/img/main/question.png" />
