@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d21f6868-216f-49d0-ade7-f123969a20f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/pages/ads.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/ads.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/announcement.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/announcement.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/tender.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tender.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/actions/actions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/redux/actions/actions.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/actions/types.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/redux/actions/types.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/reducers/rootReducer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/redux/reducers/rootReducer.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,38 +14,52 @@
     <session id="1536488604">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="jsx" value="10" />
+          <entry key="jsx" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JSX Harmony" value="10" />
+          <entry key="JSX Harmony" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="jsx" value="108" />
+          <entry key="jsx" value="109" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JSX Harmony" value="108" />
+          <entry key="JSX Harmony" value="109" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/economic.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="391">
+              <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/tender.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="15" column="43" lean-forward="true" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -140,12 +149,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573989888054</updated>
-      <workItem from="1573989889356" duration="1321000" />
+      <workItem from="1573989889356" duration="1950000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1321000" />
+    <option name="totallyTimeSpent" value="1950000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -226,16 +235,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/tender.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/redux/actions/actions.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="497">
@@ -248,7 +247,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/economic.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="391">
+          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/tender.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="43" lean-forward="true" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
