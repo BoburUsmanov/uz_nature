@@ -5,7 +5,11 @@ import { connect } from "react-redux";
 import { opens } from "./../redux/actions/actions";
 import Sidebar from "../components/common/sidebar";
 import Useful from "../components/common/useful";
-
+import ReactHtmlParser, {
+    processNodes,
+    convertNodeToElement,
+    htmlparser2
+  } from "react-html-parser";
 class Opens extends Component {
     componentDidMount() {
         this.props.opens()
@@ -54,10 +58,10 @@ class Opens extends Component {
                                </div>
                                <div className="col-3">
                                     <div className="d-flex justify-content-between">
-                                        <a href={a.zip} target="_blank" download><img src="/img/icons/zip.png" alt="" /></a>
-                                        <a href={a.pdf} target="_blank" download><img src="/img/icons/pdf.png" alt="" /></a>
-                                        <a href={a.doc} target="_blank" download><img src="/img/icons/doc.png" alt="" /></a>
-                                        <a href={a.xls} target="_blank" download><img src="/img/icons/xls.png" alt="" /></a>
+                                        <a href={ReactHtmlParser(a.zip)} target="_blank" download><img src="/img/icons/zip.png" alt="" /></a>
+                                        <a href={ReactHtmlParser(a.pdf)} target="_blank" download><img src="/img/icons/pdf.png" alt="" /></a>
+                                        <a href={ReactHtmlParser(a.doc)} target="_blank" download><img src="/img/icons/doc.png" alt="" /></a>
+                                        <a href={ReactHtmlParser(a.xls)} target="_blank" download><img src="/img/icons/xls.png" alt="" /></a>
                                     </div>
                                </div>
                            </div>
