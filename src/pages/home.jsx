@@ -923,7 +923,8 @@ class Home extends Component {
                     </div>
                     <div className="col-12">
                       <div className="padding-slider">
-                        <Anchor text={ln["more"]} />
+                        {/* <Anchor text={ln["more"]} /> */}
+                        <Link to="photogallery"  className="general__link" >{ln["more"]}</Link>
                       </div>
                     </div>
                   </div>

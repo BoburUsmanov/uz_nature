@@ -19,6 +19,8 @@ import careersReducer from './careersReducer';
 import servicesReducer from './servicesReducer';
 import opensReducer from './opensReducer';
 import photosReducer from './photosReducer';
+import archiveReducer from './archiveReducer';
+import documentReducer from './documentReducer';
 
 export default combineReducers({
    news: newsReducer,
@@ -41,4 +43,6 @@ export default combineReducers({
     services: servicesReducer,
     opens: opensReducer,
     photos: photosReducer,
+    archives:archiveReducer,
+    documents:documentReducer
 });

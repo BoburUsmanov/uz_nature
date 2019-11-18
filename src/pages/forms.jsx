@@ -2,10 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Sidebar from "../components/common/sidebar";
 import { Link } from "react-router-dom";
+import { documents } from "./../redux/actions/actions";
 import Title from "../components/common/title";
 
 class Forms extends Component {
+  componentDidMount(){
+    this.props.documents();
+  }
   render() {
+    let t = this.props.document.filter(n=>{
+      return n.lang === this.props.lang
+  });
     return (
       <div className="archive general__container">
         <div className="container-fluid">
@@ -39,101 +46,24 @@ class Forms extends Component {
                         </div>
                        </div>
 
+                       {t.map(a => (
                        <div className="archive__item">
                            <div className="row align-items-center">
                                <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                               {a.name}
                                </div>
                                <div className="col-3">
                                     <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
+                                        <a href={a.zip} target="_blank" download><img src="/img/icons/zip.png" alt="" /></a>
+                                        <a href={a.pdf} target="_blank" download><img src="/img/icons/pdf.png" alt="" /></a>
+                                        <a href={a.doc} target="_blank" download><img src="/img/icons/doc.png" alt="" /></a>
+                                        <a href={a.xls} target="_blank" download><img src="/img/icons/xls.png" alt="" /></a>
                                     </div>
                                </div>
                            </div>
                        </div>
+                       ))}
 
-                       <div className="archive__item">
-                           <div className="row align-items-center">
-                               <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                               </div>
-                               <div className="col-3">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
-                                    </div>
-                               </div>
-                           </div>
-                       </div>
-
-                       <div className="archive__item">
-                           <div className="row align-items-center">
-                               <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                               </div>
-                               <div className="col-3">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
-                                    </div>
-                               </div>
-                           </div>
-                       </div>
-
-                       <div className="archive__item">
-                           <div className="row align-items-center">
-                               <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                               </div>
-                               <div className="col-3">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
-                                    </div>
-                               </div>
-                           </div>
-                       </div>
-
-                       <div className="archive__item">
-                           <div className="row align-items-center">
-                               <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                               </div>
-                               <div className="col-3">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
-                                    </div>
-                               </div>
-                           </div>
-                       </div>
-
-                       <div className="archive__item">
-                           <div className="row align-items-center">
-                               <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                               </div>
-                               <div className="col-3">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
-                                    </div>
-                               </div>
-                           </div>
-                       </div>
                     </div>
 
                   <div className="col-12 mt-5">
@@ -178,8 +108,8 @@ class Forms extends Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events.events,
+  document: state.documents.documents,
   lang: state.lang.lang
 });
 
-export default connect(mapStateToProps)(Forms);
+export default connect(mapStateToProps,{documents})(Forms);

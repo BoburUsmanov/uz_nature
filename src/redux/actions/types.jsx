@@ -24,3 +24,5 @@ export const SERVICES= "SERVICES";
 export const OPENS= "OPENS";
 export const PHOTOS= "PHOTOS";
 export const PHOTOSS= "PHOTOSS";
+export const ARCHIVES= "ARCHIVES";
+export const DOCUMENTS= "DOCUMENTS";

@@ -220,7 +220,7 @@ export default class FAQ extends Component {
                                     </div>
 
                                     <div className="text-center">
-                                        <Link className="faq__send">
+                                        <Link to="/ask" className="faq__send">
                                         Задать вопрос
                                         </Link>
                                     </div>

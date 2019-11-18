@@ -2,10 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Sidebar from "../components/common/sidebar";
 import { Link } from "react-router-dom";
+import { archives } from "./../redux/actions/actions";
 import Title from "../components/common/title";
 
 class Archive extends Component {
+  componentDidMount() {
+    this.props.archives();
+  }
   render() {
+    let t = this.props.archive.filter(n=>{
+      return n.lang === this.props.lang
+  });
     return (
       <div className="archive general__container">
         <div className="container-fluid">
@@ -27,143 +34,72 @@ class Archive extends Component {
                     <Title title="архив" />
                   </div>
 
-                    <div className="col-12">
-                       <div className="archive__top">
-                       <div className="row">
-                            <div className="col-9">
-                                <div className="archive__topic">Тема</div>
-                            </div>
-                            <div className="col-3">
-                                <div className="archive__formate">Скачать как:</div>
-                            </div>
+                  <div className="col-12">
+                    <div className="archive__top">
+                      <div className="row">
+                        <div className="col-9">
+                          <div className="archive__topic">Тема</div>
                         </div>
-                       </div>
-
-                       <div className="archive__item">
-                           <div className="row align-items-center">
-                               <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                               </div>
-                               <div className="col-3">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
-                                    </div>
-                               </div>
-                           </div>
-                       </div>
-
-                       <div className="archive__item">
-                           <div className="row align-items-center">
-                               <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                               </div>
-                               <div className="col-3">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
-                                    </div>
-                               </div>
-                           </div>
-                       </div>
-
-                       <div className="archive__item">
-                           <div className="row align-items-center">
-                               <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                               </div>
-                               <div className="col-3">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
-                                    </div>
-                               </div>
-                           </div>
-                       </div>
-
-                       <div className="archive__item">
-                           <div className="row align-items-center">
-                               <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                               </div>
-                               <div className="col-3">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
-                                    </div>
-                               </div>
-                           </div>
-                       </div>
-
-                       <div className="archive__item">
-                           <div className="row align-items-center">
-                               <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                               </div>
-                               <div className="col-3">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
-                                    </div>
-                               </div>
-                           </div>
-                       </div>
-
-                       <div className="archive__item">
-                           <div className="row align-items-center">
-                               <div className="col-9">
-                               Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                               </div>
-                               <div className="col-3">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="#" target="_blank"><img src="/img/icons/zip.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/pdf.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/doc.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="/img/icons/xls.png" alt=""/></a>
-                                    </div>
-                               </div>
-                           </div>
-                       </div>
+                        <div className="col-3">
+                          <div className="archive__formate">Скачать как:</div>
+                        </div>
+                      </div>
                     </div>
+                    {t.map(a => (
+                      <div className="archive__item">
+                        <div className="row align-items-center">
+                          <div className="col-9">
+                          {a.name}
+                          </div>
+                          <div className="col-3">
+                            <div className="d-flex justify-content-between">
+                              <a href={a.zip} target="_blank" download>
+                                <img src="/img/icons/zip.png" alt="" />
+                              </a>
+                              <a href={a.pdf} target="_blank" download>
+                                <img src="/img/icons/pdf.png" alt="" />
+                              </a>
+                              <a href={a.doc} target="_blank" download>
+                                <img src="/img/icons/doc.png" alt="" />
+                              </a>
+                              <a href={a.xls} target="_blank" download>
+                                <img src="/img/icons/xls.png" alt="" />
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
 
                   <div className="col-12 mt-5">
-                          <ul className="d-flex justify-content-center general__pagination align-items-center">
-                            <li className="prev">
-                              <span className="fa fa-angle-left"></span>
-                            </li>
-                            <li className="active">
-                              <Link>1</Link>
-                            </li>
+                    <ul className="d-flex justify-content-center general__pagination align-items-center">
+                      <li className="prev">
+                        <span className="fa fa-angle-left"></span>
+                      </li>
+                      <li className="active">
+                        <Link>1</Link>
+                      </li>
 
-                            <li>
-                              <Link>2</Link>
-                            </li>
+                      <li>
+                        <Link>2</Link>
+                      </li>
 
-                            <li>
-                              <Link>3</Link>
-                            </li>
-                            <li>
-                              <Link>4</Link>
-                            </li>
-                            <li>
-                              <Link>5</Link>
-                            </li>
+                      <li>
+                        <Link>3</Link>
+                      </li>
+                      <li>
+                        <Link>4</Link>
+                      </li>
+                      <li>
+                        <Link>5</Link>
+                      </li>
 
-                            <li className="next">
-                              <span className="fa fa-angle-right"></span>
-                            </li>
-                          </ul>
-                        </div>
+                      <li className="next">
+                        <span className="fa fa-angle-right"></span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -178,8 +114,8 @@ class Archive extends Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events.events,
+  archive: state.archives.archives,
   lang: state.lang.lang
 });
 
-export default connect(mapStateToProps)(Archive);
+export default connect(mapStateToProps, { archives })(Archive);

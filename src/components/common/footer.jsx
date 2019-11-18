@@ -35,22 +35,22 @@ import {oz} from './../../lang/oz';
                                         <span className="fa fa-caret-right"></span><Link to="/">{ln['info']}</Link>
                                     </li>
                                     <li>
-                                        <span className="fa fa-caret-right"></span><Link to="/">{ln['about']}</Link>
+                                        <span className="fa fa-caret-right"></span><Link to="/center">{ln['about']}</Link>
                                     </li>
                                     <li>
-                                        <span className="fa fa-caret-right"></span><Link to="/">{ln['activity']}</Link>
+                                        <span className="fa fa-caret-right"></span><Link to="/activity/1">{ln['activity']}</Link>
                                     </li>
                                     <li>
-                                        <span className="fa fa-caret-right"></span><Link to="/">{ln['documents']}</Link>
+                                        <span className="fa fa-caret-right"></span><Link to="/documents">{ln['documents']}</Link>
                                     </li>
                                     <li>
-                                        <span className="fa fa-caret-right"></span><Link to="/">{ln['feedback']}</Link>
+                                        <span className="fa fa-caret-right"></span><Link to="/ask">{ln['feedback']}</Link>
                                     </li>
                                     <li>
-                                        <span className="fa fa-caret-right"></span><Link to="/">{ln['For legal entities']}</Link>
+                                        <span className="fa fa-caret-right"></span><Link to="/juridical">{ln['For legal entities']}</Link>
                                     </li>
                                     <li>
-                                        <span className="fa fa-caret-right"></span><Link to="/">{ln['For individuals']}</Link>
+                                        <span className="fa fa-caret-right"></span><Link to="/physical">{ln['For individuals']}</Link>
                                     </li>
                                     <li>
                                         <span className="fa fa-caret-right"></span><Link to="/">{ln['Hot line']}</Link>

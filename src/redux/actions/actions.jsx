@@ -1,7 +1,7 @@
 import {  CHANGE__LANGUAGE, 
     REGIONS, REGION,  COMITET,ACTIVITIES,SECTIONS,
      ACTIVITIES__PHOTO, NEWSS, EVENTS, LEGALS,LEGALSPHOTO, ADS,ADSPHOTO,TENDERS, TENDERSPHOTO, ECONOMICS,
-     RELEASES,INTERVIEWS,VACATIONS,JOBS,CAREERS,SERVICES,OPENS,PHOTOS,PHOTOSS} from './types';
+     RELEASES,INTERVIEWS,VACATIONS,JOBS,CAREERS,SERVICES,OPENS,PHOTOS,PHOTOSS,ARCHIVES,DOCUMENTS} from './types';
 import Axios from 'axios';
 
 
@@ -263,6 +263,25 @@ export const photoss = () => dispatch => {
         dispatch({
             type: PHOTOSS,
             payload: response.data.dataphoto
+        })
+     } )
+}
+
+export const archives = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/archives`).then(response =>{
+        dispatch({
+            type: ARCHIVES,
+            payload: response.data
+        })
+     } )
+}
+
+
+export const documents = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/forms`).then(response =>{
+        dispatch({
+            type: DOCUMENTS,
+            payload: response.data
         })
      } )
 }

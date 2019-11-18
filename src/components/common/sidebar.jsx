@@ -69,7 +69,7 @@ class Sidebar extends Component {
                     </div>
 
                     <div className="text-right">
-                        <Link to="/news" className="general__anchor">Все видео</Link>
+                        <Link to="/photogallery" className="general__anchor">Все видео</Link>
                     </div>
                 </div>
                 <div className="sidebar__photo">
@@ -96,7 +96,7 @@ class Sidebar extends Component {
                     </div>
 
                     <div className="text-right">
-                        <Link to="/news" className="general__anchor">Все фото</Link>
+                        <Link to="/photogallery" className="general__anchor">Все фото</Link>
                     </div>
 
                     <div className="sidebar__slider">
