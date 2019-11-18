@@ -1,11 +1,18 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import Sidebar from "../components/common/sidebar";
-import { Link } from "react-router-dom";
 import Title from "../components/common/title";
-
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { services } from "./../redux/actions/actions";
+import Sidebar from "../components/common/sidebar";
+import Useful from "../components/common/useful";
 class Government extends Component {
+  componentDidMount() {
+    this.props.services()
+}
   render() {
+    let t = this.props.service.filter(n=>{
+      return n.lang === this.props.lang
+  });
     return (
       <div className="government general__container">
         <div className="container-fluid">
@@ -31,19 +38,14 @@ class Government extends Component {
                     <div className="government__content">
                       <div className="row">
                         <div className="col-12">
+                        {t.map(a => (
                           <div className="government__item">
-                            Экологическая сертификация ввозимых в республику
-                            узбекистан новых автотранспортных средств категорий
-                            «м2», «м3» и «n2», оборудованных бензиновыми и
-                            дизельными двигателями, на соответствие требованиям
-                            экологического класса не ниже «евро-2»
+                            {a.name}
                             <div className="text-right mt-2">
-                              <a href="#" className="more">
-                                Подробнее{" "}
-                                <i className="fa fa-angle-right ml-1"></i>
-                              </a>
+                            <Link to={"/government/" + a.one_id} className="more">Подробнее <i className="fa fa-angle-right ml-1"></i></Link>
                             </div>
                           </div>
+                        ))}
 
                           <div className="government__item">
                             Экологическая сертификация ввозимых в республику
@@ -215,8 +217,8 @@ class Government extends Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events.events,
+  service: state.services.services,
   lang: state.lang.lang
 });
 
-export default connect(mapStateToProps)(Government);
+export default connect(mapStateToProps, {services})(Government);

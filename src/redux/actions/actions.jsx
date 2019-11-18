@@ -1,6 +1,7 @@
 import {  CHANGE__LANGUAGE, 
     REGIONS, REGION,  COMITET,ACTIVITIES,SECTIONS,
-     ACTIVITIES__PHOTO, NEWSS, EVENTS, LEGALS,LEGALSPHOTO, ADS,ADSPHOTO,TENDERS, TENDERSPHOTO, } from './types';
+     ACTIVITIES__PHOTO, NEWSS, EVENTS, LEGALS,LEGALSPHOTO, ADS,ADSPHOTO,TENDERS, TENDERSPHOTO, ECONOMICS,
+     RELEASES,INTERVIEWS,VACATIONS,JOBS,CAREERS,SERVICES,OPENS,PHOTOS,PHOTOSS} from './types';
 import Axios from 'axios';
 
 
@@ -165,6 +166,103 @@ export const tendersphoto = () => dispatch => {
             payload: response.data.dataphoto
             
         })
-        // console.log(response.data.dataphoto)
+     } )
+}
+
+export const economics = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/economics`).then(response =>{
+        dispatch({
+            type: ECONOMICS,
+            payload: response.data.data
+        })
+     } )
+}
+
+
+export const releases = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/releases`).then(response =>{
+        dispatch({
+            type: RELEASES,
+            payload: response.data.data
+        })
+     } )
+}
+
+
+export const interviews = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/interviews`).then(response =>{
+        dispatch({
+            type: INTERVIEWS,
+            payload: response.data.data
+        })
+     } )
+}
+
+
+export const vacations = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/vacations`).then(response =>{
+        dispatch({
+            type: VACATIONS,
+            payload: response.data.data
+        })
+     } )
+}
+
+
+
+export const jobs = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/jobs`).then(response =>{
+        dispatch({
+            type: JOBS,
+            payload: response.data.data
+        })
+     } )
+}
+
+
+export const careers = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/careers`).then(response =>{
+        dispatch({
+            type: CAREERS,
+            payload: response.data.data
+        })
+     } )
+}
+
+
+export const services = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/services`).then(response =>{
+        dispatch({
+            type: SERVICES,
+            payload: response.data.data
+        })
+     } )
+}
+
+export const opens = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/opens`).then(response =>{
+        dispatch({
+            type: OPENS,
+            payload: response.data
+        })
+     } )
+}
+
+
+export const photos = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/photos`).then(response =>{
+        dispatch({
+            type: PHOTOS,
+            payload: response.data.data
+        })
+     } )
+}
+
+export const photoss = () => dispatch => {
+    Axios.get(`http://uz.orikzor.com/photos`).then(response =>{
+        dispatch({
+            type: PHOTOSS,
+            payload: response.data.dataphoto
+        })
      } )
 }

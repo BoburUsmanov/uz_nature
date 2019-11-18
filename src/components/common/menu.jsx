@@ -5,11 +5,13 @@ import { ru } from "./../../lang/ru";
 import { en } from "./../../lang/en";
 import { uz } from "./../../lang/uz";
 import { legals } from "./../../redux/actions/actions";
+import { careers } from "./../../redux/actions/actions";
 import $ from "jquery";
 
 class Menu extends Component {
   componentDidMount() {
     this.props.legals();
+    this.props.careers();
 
     $(".faq__item").on("click", function() {
       $(this)
@@ -44,6 +46,11 @@ class Menu extends Component {
     }
 
     let legal_menus = this.props.legal.filter(n => {
+      return (
+        n.name !== null  && n.lang === this.props.lang
+      );
+    });
+    let career_menus = this.props.career.filter(n => {
       return (
         n.name !== null  && n.lang === this.props.lang
       );
@@ -86,7 +93,7 @@ class Menu extends Component {
                   <Link to="/press">Пресс релизы</Link>
                 </li>
                 <li>
-                  <Link to="/press">Порядок аккредитации</Link>
+                  <Link to="/accreditation">Порядок аккредитации</Link>
                 </li>
                 <li>
                   <Link to="/interviews">Интервью и статьи</Link>
@@ -115,12 +122,17 @@ class Menu extends Component {
                     </li>
                   </ul>
                 </li>
-                <li>
+                {career_menus.map(l => (
+                  <li>
+                    <Link to={'/careers/'+l.one_id}>{l.name}</Link>
+                  </li>
+                ))}
+                {/* <li>
                   <Link to="/requirements">Требования</Link>
                 </li>
                 <li>
                   <Link to="/internship">Стажировка</Link>
-                </li>
+                </li> */}
               </ul>
             </li>
             <li>
@@ -141,7 +153,7 @@ class Menu extends Component {
               </ul>
             </li>
             <li>
-              <Link to="/news">Открытые данные</Link>
+              <Link to="/open">Открытые данные</Link>
             </li>
             <li>
               <Link to="/news">
@@ -288,9 +300,10 @@ class Menu extends Component {
 const mapStateToProps = state => ({
   lang: state.lang.lang,
   legal: state.legals.legals,
+  career: state.careers.careers,
   ru: ru,
   en: en,
   uz: uz
 });
 
-export default connect(mapStateToProps, { legals })(Menu);
+export default connect(mapStateToProps, { legals,careers })(Menu);

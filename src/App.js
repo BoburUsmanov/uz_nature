@@ -28,16 +28,21 @@ import Cooperation from './pages/cooperation';
 import Egovernment from './pages/egovernment';
 import Anticorruption from './pages/anticorruption';
 import Tender from './pages/tender';
+import TenderSingle from './pages/tenderSingle';
 import Economic from './pages/economic';
+import economicSingle from './pages/economicSingle';
 import Projects from './pages/projects';
 import Press from './pages/press';
+import pressSingle from './pages/pressSingle';
 import Interviews from './pages/interviews';
+import interviewsSingle from './pages/interviewsSingle';
 import Archive from './pages/archive';
 import Vacancy from './pages/vacancy';
 import Jobs from './pages/jobs';
 import Requirements from './pages/requirements';
 import Internship from './pages/internship';
 import Government from './pages/government';
+import governmentSingle from './pages/governmentSingle';
 import Forms from './pages/forms';
 import Calculator from './pages/calculator';
 import Photogallery from './pages/photogallery';
@@ -45,6 +50,10 @@ import Videogallery from './pages/videogallery';
 import Physical from './pages/form';
 import Juridical from './pages/juridical';
 import Ask from './pages/ask';
+import Accreditation from './pages/accreditation';
+import vacancySingle from './pages/vacancySingle';
+import Opens from './pages/opens';
+import opensSingle from './pages/opensSingle';
 
 export default class App extends Component {
   render() {
@@ -58,16 +67,22 @@ export default class App extends Component {
             <Route exact path="/news/:id" component={singleNews} />
             <Route exact path="/events" component={Events} />
             <Route exact path="/tenders" component={Tender} />
+            <Route exact path="/tenders/:id" component={TenderSingle} />
             <Route exact path="/economics" component={Economic} />
+            <Route exact path="/economics/:id" component={economicSingle} />
             <Route exact path="/projects" component={Projects} />
             <Route exact path="/press" component={Press} />
+            <Route exact path="/press/:id" component={pressSingle} />
             <Route exact path="/interviews" component={Interviews} />
+            <Route exact path="/interviews/:id" component={interviewsSingle} />
             <Route exact path="/archive" component={Archive} />
             <Route exact path="/vacancy" component={Vacancy} />
+            <Route exact path="/vacancy/:id" component={vacancySingle} />
             <Route exact path="/jobs" component={Jobs} />
             <Route exact path="/requirements" component={Requirements} />
             <Route exact path="/internship" component={Internship} />
             <Route exact path="/government" component={Government} />
+            <Route exact path="/government/:id" component={governmentSingle} />
             <Route exact path="/forms" component={Forms} />
             <Route exact path="/calculator" component={Calculator} />
             <Route exact path="/photogallery" component={Photogallery} />
@@ -92,6 +107,9 @@ export default class App extends Component {
             <Route exact path="/physical" component={Physical} />
             <Route exact path="/juridical" component={Juridical} />
             <Route exact path="/ask" component={Ask} />
+            <Route exact path="/accreditation" component={Accreditation} />
+            <Route exact path="/open" component={Opens} />
+            <Route exact path="/open/:id" component={opensSingle} />
             
           </Switch>
           <Footer />

@@ -1,11 +1,19 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import Sidebar from "../components/common/sidebar";
-import { Link } from "react-router-dom";
 import Title from "../components/common/title";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { releases } from "./../redux/actions/actions";
+import Sidebar from "../components/common/sidebar";
+import Useful from "../components/common/useful";
 
 class Press extends Component {
+  componentDidMount() {
+    this.props.releases()
+}
   render() {
+    let t = this.props.release.filter(n=>{
+      return n.lang === this.props.lang
+  });
     return (
       <div className="press general__container">
         <div className="container-fluid">
@@ -28,14 +36,17 @@ class Press extends Component {
                   </div>
 
                   <div className="col-12">
+                  {t.map(a => (
                         <div className="press__item">
-                                <h2 className="press__item-title">Пресс-релиз заседания Управляющего комитета и посещение пилотных проектов </h2>
-                                <p className="press__item-text">
+                                <h2 className="press__item-title">{a.name}</h2>
+                                {/* <p className="press__item-text">
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                                </p>
-                                <div className="d-flex align-items-center justify-content-between mt-3"><div className="day">Опубликовано: 20 июня 2019 г. - 13:22 <span className="eye ml-5"><i className="fa fa-eye mr-2"></i>154</span></div><a href="#" className="more">Подробнее <i className="fa fa-angle-right ml-1"></i></a></div>
+                                </p> */}
+                                <div className="d-flex align-items-center justify-content-between mt-3"><div className="day">Опубликовано: 20 июня 2019 г. - 13:22 <span className="eye ml-5"><i className="fa fa-eye mr-2"></i>154</span></div>
+                                <Link to={'/press/' + a.one_id} className="more">Подробнее <i className="fa fa-angle-right"></i></Link>
+                                </div>
                         </div>
-
+ ))}
                         <div className="press__item">
                                 <h2 className="press__item-title">Пресс-релиз заседания Управляющего комитета и посещение пилотных проектов </h2>
                                 <p className="press__item-text">
@@ -119,8 +130,8 @@ class Press extends Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events.events,
+  release: state.releases.releases,
   lang: state.lang.lang
 });
 
-export default connect(mapStateToProps)(Press);
+export default connect(mapStateToProps, {releases})(Press);

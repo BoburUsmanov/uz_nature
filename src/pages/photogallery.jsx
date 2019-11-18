@@ -1,11 +1,36 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import Sidebar from "../components/common/sidebar";
-import { Link } from "react-router-dom";
 import Title from "../components/common/title";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { photos,photoss } from "./../redux/actions/actions";
+import Sidebar from "../components/common/sidebar";
+import Useful from "../components/common/useful";
 
 class Photogallery extends Component {
+  componentDidMount() {
+    this.props.photos()
+    this.props.photoss()
+}
   render() {
+
+    let t = this.props.photo.filter(n=>{
+      return n.lang === this.props.lang
+  });
+  let s = this.props.photo.find(n => {
+    return (
+      n.one_id === this.props.match.params.id 
+    );
+  });
+
+  let photo_all = [];
+  for(var i=0; i<t.length; i++){
+    for(var j=0; j<this.props.photop.length; j++){
+      if(this.props.photop[j].photoname_id == t[i].one_id ){
+        photo_all.push(this.props.photop[j])
+      }
+    }
+  }
+
     return (
       <div className="photo general__container">
         <div className="container-fluid">
@@ -29,18 +54,18 @@ class Photogallery extends Component {
 
                   <div className="col-12">
                     <div className="photo__content">
+                    {t.map(a => (
                       <div className="photo__item">
                         <div className="row">
                           <div className="col-12">
                             <h2 className="photo__item-title">
-                              Выпуск в дикую природу дрофы-красотки, занесенной
-                              в Красную книгу
+                              {a.name}
                             </h2>
                           </div>
                           <div className="col-12 icons">
                             <div className="d-flex">
                               <span className="day mr-5">
-                                <i className="fa fa-calendar mr-2"></i>19 Апреля
+                                <i className="fa fa-calendar mr-2"></i>3 Апреля
                                 2019
                               </span>
                               <span className="number mr-5">
@@ -53,56 +78,22 @@ class Photogallery extends Component {
                           </div>
                           <div className="col-12">
                             <div className="row">
-                              <div className="col-2">
+                            {photo_all.map(p => (
+                                <div className="col-2">
+                              
                                 <img
-                                  src="/img/gallery/1.png"
+                                  src={"http://uz.orikzor.com" + p.photo}
                                   className="img-fluid"
                                   alt=""
                                 />
                               </div>
-                              <div className="col-2">
-                                <img
-                                  src="/img/gallery/2.png"
-                                  className="img-fluid"
-                                  alt=""
-                                />
-                              </div>
-
-                              <div className="col-2">
-                                <img
-                                  src="/img/gallery/3.png"
-                                  className="img-fluid"
-                                  alt=""
-                                />
-                              </div>
-
-                              <div className="col-2">
-                                <img
-                                  src="/img/gallery/4.png"
-                                  className="img-fluid"
-                                  alt=""
-                                />
-                              </div>
-
-                              <div className="col-2">
-                                <img
-                                  src="/img/gallery/5.png"
-                                  className="img-fluid"
-                                  alt=""
-                                />
-                              </div>
-
-                              <div className="col-2">
-                                <img
-                                  src="/img/gallery/6.png"
-                                  className="img-fluid"
-                                  alt=""
-                                />
-                              </div>
+                              ))}
+                              
                             </div>
                           </div>
                         </div>
                       </div>
+                    ))}
 
                       <div className="photo__item">
                         <div className="row">
@@ -374,8 +365,9 @@ class Photogallery extends Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events.events,
+  photo: state.photos.photos,
+  photop: state.photos.photoss,
   lang: state.lang.lang
 });
 
-export default connect(mapStateToProps)(Photogallery);
+export default connect(mapStateToProps, {photos,photoss})(Photogallery);
