@@ -2695,3 +2695,45 @@ body {
 .react-calendar__tile--active {
   background-color: #17A085;
 }
+.fc-today-button.fc-button.fc-button-primary {
+  display: none;
+}
+.fc-toolbar h2 {
+  font-size: 20px;
+  padding-left: 15px;
+  margin-top: 15px;
+}
+.fc-button {
+  border-radius: 50% !important;
+  padding: 10px !important;
+  background-color: rgba(23, 160, 133, 0.1);
+  color: #17A085;
+  border: unset;
+  margin-right: 5px;
+  margin-top: 15px;
+  outline: none;
+  box-shadow: unset !important;
+}
+.fc-button:hover {
+  background-color: #17A085;
+  color: #fff;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 6px !important;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(23, 160, 133, 0.25);
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #17A085;
+}
+.fc-unthemed td.fc-today {
+  background: rgba(23, 160, 133, 0.25);
+}
+.fc-event,
+.fc-event-dot {
+  background: #17A085;
+}

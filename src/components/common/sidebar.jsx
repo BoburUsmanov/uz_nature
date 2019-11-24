@@ -5,6 +5,7 @@ import Ccalendar from './calendar';
 import { news } from './../../redux/actions/actions';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
+import FulCalendar from '../FulCalendar';
 
 class Sidebar extends Component {
     componentDidMount() {
@@ -24,7 +25,7 @@ class Sidebar extends Component {
             <div className="sidebar">
                 <div className="sidebar__calendar">
                     <Title title="КалендаРь событий" />
-                    <Ccalendar />
+                    <FulCalendar />
                     <div className="text-right">
                         <Link to="/news" className="general__anchor">Все событий</Link>
                     </div>
