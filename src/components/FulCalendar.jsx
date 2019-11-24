@@ -8,13 +8,13 @@ export default class FulCalendar extends Component {
         super();
     
 
-        // this.toggle = this.toggle.bind(this);
+        this.toggle = this.toggle.bind(this);
     };
 
-    // toggle(info) {
-    //     info.preventDefault();
-    //    alert(info.event.title)
-    // }
+    toggle(info) {
+        info.preventDefault();
+       alert(info.event.title)
+    }
   
   render() {
     return (
