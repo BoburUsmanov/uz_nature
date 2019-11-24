@@ -68,7 +68,7 @@ class singleNews extends Component {
                     </div>
                     <div className="col-12">
                       <div className="news__container">
-                        <img src={"http://uz.orikzor.com" + !this.state.loading && s.photo} alt="" />
+                        <img src={"http://uz.orikzor.com" + s.photo} alt="" />
                         <div className="news__icons">
                           <span className="day">
                             <i className="fa fa-calendar"></i>

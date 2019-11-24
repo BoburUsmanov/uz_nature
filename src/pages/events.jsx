@@ -4,6 +4,7 @@ import { events } from "./../redux/actions/actions";
 import Sidebar from "../components/common/sidebar";
 import { Link } from "react-router-dom";
 import Title from "../components/common/title";
+import AppCalendar from "./eventsClaendar";
 
 class Events extends Component {
   componentDidMount() {
@@ -29,6 +30,9 @@ class Events extends Component {
                   </div>
                   <div className="col-12">
                     <Title title="Календарь мероприятий" />
+                  </div>
+                  <div className="col-12">
+                    {/* <AppCalendar /> */}
                   </div>
                   <div className="col-12">
                     <p className="event__day">
