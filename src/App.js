@@ -57,6 +57,7 @@ import opensSingle from './pages/opensSingle';
 import Sitemap from './pages/sitemap';
 import Symbols from './pages/symbols';
 import Event from './pages/eventsSingle';
+import Photo from './pages/photo';
 
 export default class App extends Component {
   render() {
@@ -90,6 +91,7 @@ export default class App extends Component {
             <Route exact path="/forms" component={Forms} />
             <Route exact path="/calculator" component={Calculator} />
             <Route exact path="/photogallery" component={Photogallery} />
+            <Route exact path="/photogallery/:id" component={Photo} />
             <Route exact path="/videogallery" component={Videogallery} />
             <Route exact path="/faq" component={FAQ} />
             <Route exact path="/ads" component={Announcement} />
