@@ -65,4 +65,48 @@ $(document).ready(function(){
         $('.anticorruption__content').removeClass('show');
         $('.anticorruption__content').eq($(this).index()).addClass('show');
     });
+
+    $(".faq__item.nofaq").on("click", function() {
+        $(this)
+          .siblings()
+          .removeClass("active")
+          .find(".faq__content")
+          .slideUp();
+        $(this)
+          .siblings()
+          .find(".fa")
+          .removeClass("fa-chevron-up")
+          .addClass("fa-chevron-down");
+  
+        $(this)
+          .find(".faq__content")
+          .slideToggle();
+        $(this)
+          .find(".fa")
+          .removeClass("fa-chevron-down")
+          .addClass("fa-chevron-up");
+        $(this).addClass("active");
+      });
+  
+      $(".faq__item.hasfaq").on("click", function() {
+        $(this)
+          .siblings()
+          .removeClass("active")
+          .find(".faq__content")
+          .slideUp();
+        $(this)
+          .siblings()
+          .find(".fa")
+          .removeClass("fa-minus")
+          .addClass("fa-plus");
+  
+        $(this)
+          .find(".faq__content")
+          .slideToggle();
+        $(this)
+          .find(".fa")
+          .removeClass("fa-plus")
+          .addClass("fa-minus");
+        $(this).addClass("active");
+      });
 });

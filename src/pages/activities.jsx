@@ -11,6 +11,7 @@ import ReactHtmlParser, {
   htmlparser2
 } from "react-html-parser";
 class Activities extends Component {
+  
   componentDidMount() {
     $(".faq__item.nofaq").on("click", function() {
       $(this)

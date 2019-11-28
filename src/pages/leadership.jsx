@@ -114,7 +114,7 @@ import ReactHtmlParser, {
                                 Электронная почта: {l.email}
                               </p>
     
-                              <div className="d-flex justify-content-between">
+                              <div className="d-none justify-content-between">
                                 <a href="#" className="leadership__link">
                                   Краткая биография
                                 </a>
