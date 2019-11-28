@@ -119,8 +119,8 @@ import {oz} from './../../lang/oz';
                             </div>
                             <div className="col-4">
                                 <div className="d-flex justify-content-around">
-                                    <Link to="" className="footer__bottom-link ">Карта сайта</Link>
-                                    <Link to="" className="footer__bottom-link ">Государственные символы</Link>
+                                    <Link to="/sitemap" className="footer__bottom-link ">Карта сайта</Link>
+                                    <Link to="/symbols" className="footer__bottom-link ">Государственные символы</Link>
                                 </div>
                             </div>
                             <div className="col-4">

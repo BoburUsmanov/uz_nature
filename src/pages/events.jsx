@@ -32,9 +32,9 @@ class Events extends Component {
                     <Title title="Календарь мероприятий" />
                   </div>
                   <div className="col-12">
-                    {/* <FulCalendar /> */}
+                  <FulCalendar />
                   </div>
-                  <div className="col-12">
+                  {/* <div className="col-12">
                     <p className="event__day">
                       17 июня “Всемирный день борьбы с опустыниванием и засухой
                     </p>
@@ -99,7 +99,7 @@ class Events extends Component {
                         </a>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

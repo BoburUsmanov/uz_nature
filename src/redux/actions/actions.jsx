@@ -33,7 +33,7 @@ export const events = () => dispatch => {
         
         dispatch({
             type: EVENTS,
-            payload: response.data
+            payload: response.data.data
         })
         // console.log(response.data.data)
     })

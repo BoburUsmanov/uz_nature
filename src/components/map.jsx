@@ -49,7 +49,7 @@ class MapUzbekistan extends Component {
                 strokeOpacity="1"
                 fill="#15957C"
                 original="#0093ce"
-                id="1"
+                id="5"
                 className="jvectormap-region"
                 fillOpacity="1"
               ></path>
@@ -79,7 +79,7 @@ class MapUzbekistan extends Component {
                 strokeOpacity="1"
                 fill="#17A085"
                 original="#00bdf7"
-                id="3"
+                id="7"
                 className="jvectormap-region"
               ></path>
 
@@ -93,7 +93,7 @@ class MapUzbekistan extends Component {
                 strokeOpacity="1"
                 fill="#17A085"
                 original="#0093ce"
-                id="4"
+                id="13"
                 className="jvectormap-region"
               ></path>
 
@@ -107,7 +107,7 @@ class MapUzbekistan extends Component {
                 strokeOpacity="1"
                 fill="#17A085"
                 original="#7acdf4"
-                id="5"
+                id="3"
                 className="jvectormap-region"
                 fillOpacity="1"
               ></path>
@@ -122,8 +122,8 @@ class MapUzbekistan extends Component {
                 strokeOpacity="1"
                 fill="#17A085"
                 original="#009fdf"
-                id="6"
-                className="jvectormap-region active"
+                id="4"
+                className="jvectormap-region"
               ></path>
 
               <path
@@ -136,7 +136,7 @@ class MapUzbekistan extends Component {
                 strokeOpacity="1"
                 fill="#17A085"
                 original="#7acdf4"
-                id="7"
+                id="14"
                 className="jvectormap-region"
               ></path>
 
@@ -194,7 +194,7 @@ class MapUzbekistan extends Component {
                 strokeOpacity="1"
                 fill="#17A085"
                 original="#009fdf"
-                id="11"
+                id="6"
                 className="jvectormap-region"
               ></path>
 
@@ -208,7 +208,7 @@ class MapUzbekistan extends Component {
                 strokeOpacity="1"
                 fill="#17A085"
                 original="#00abf0"
-                id="12"
+                id="11"
                 className="jvectormap-region"
                 fillOpacity="1"
               ></path>
@@ -223,7 +223,7 @@ class MapUzbekistan extends Component {
                 strokeOpacity="1"
                 fill="#17A085"
                 original="#40c4f9"
-                id="13"
+                id="12"
                 className="jvectormap-region"
               ></path>
 
@@ -237,8 +237,8 @@ class MapUzbekistan extends Component {
                 strokeOpacity="1"
                 fill="#17A085"
                 original="#00b7fb"
-                id="14"
-                className="jvectormap-region"
+                id="1"
+                className="jvectormap-region active"
               ></path>
             </g>
           </svg>

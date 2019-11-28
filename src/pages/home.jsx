@@ -7,7 +7,7 @@ import { uz } from "./../lang/uz";
 import { en } from "./../lang/en";
 import { oz } from "./../lang/oz";
 import Title from "../components/common/title";
-import { news, activities,sections } from "./../redux/actions/actions";
+import { news, activities,sections,events } from "./../redux/actions/actions";
 import Anchor from "../components/common/link";
 import MapUzbekistan from "../components/map";
 import PhotoSlider from "../components/photoSlider";
@@ -20,6 +20,7 @@ class Home extends Component {
     this.props.activities();
     this.props.sections();
     this.props.activities();
+    this.props.events();
     $('.main__map-box svg path').on('click',function(){
       $(this).siblings().removeClass('active');
       $(this).addClass('active');
@@ -41,7 +42,7 @@ class Home extends Component {
     let main__news_left = this.props.newss.filter(n => {
       return n.lang === this.props.lang;
     });
-    let main__news_right = this.props.newss.filter(n => {
+    let main__news_right = this.props.eventss.filter(n => {
       return n.lang === this.props.lang;
     });
 
@@ -134,7 +135,7 @@ class Home extends Component {
                             </div>
                             <div className="col-10">
                               <Link
-                                to={"/news/" + n.one_id}
+                                to={"/events/" + n.one_id}
                                 className="news-link"
                               >
                                 {n.name}
@@ -144,7 +145,8 @@ class Home extends Component {
                         ))
                       : "news not found"}
                   </div>
-                  <Anchor text={ln["more"]} />
+                  {/* <Anchor text={ln["more"]} /> */}
+                  <Link className="general__link" to="/events">{ln["more"]}</Link>
                 </div>
               </div>
             </div>
@@ -918,7 +920,7 @@ class Home extends Component {
                     </div>
                     <div className="col-12">
                       <div className="main__photo-slider">
-                        <PhotoSlider />
+                        {/* <PhotoSlider /> */}
                       </div>
                     </div>
                     <div className="col-12">
@@ -959,6 +961,7 @@ class Home extends Component {
 const mapStateToProps = state => ({
   newss: state.news.news,
   lang: state.lang.lang,
+  eventss:state.events.events,
   activitiy: state.activities.activities,
   ru: ru,
   uz: uz,
@@ -968,5 +971,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { news, activities,sections }
+  { news, activities,sections,events }
 )(Home);

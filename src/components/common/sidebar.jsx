@@ -21,33 +21,43 @@ class Sidebar extends Component {
             arrows: false,
             autoplay:true
         };
+
+        let most = this.props.newss.filter(n => {
+            return n.lang === this.props.lang;
+          });
         return (
             <div className="sidebar">
                 <div className="sidebar__calendar">
                     <Title title="КалендаРь событий" />
                     <FulCalendar />
                     <div className="text-right">
-                        <Link to="/news" className="general__anchor">Все событий</Link>
+                        <Link to="/events" className="general__anchor">Все событий</Link>
                     </div>
                 </div>
                 <div className="sidebar__popular">
                     <Title title="Популярные новости" />
-                    {/* {
-                        this.props.events ? this.props.events.map(event =>
-                            <div className="sidebar__news">
+                    {
+                        most.map(m =>
+                            (<div className="sidebar__news">
                                 <p className="sidebar__news-text">
-                                    {event.name}
+                                <Link
+                                to={"/news/" + m.one_id}
+                                className="news-link"
+                              >
+                               {m.name}
+                              </Link>
+                                    
                                 </p>
                                 <div className="d-flex justify-content-between">
                                     <span className="sidebar__news-category">Новости</span>
                                     <span className="sidebar__news-date">
-                                        <span className="day">14.06.2019</span>
+                                        <span className="day"> {m.c_d + "." + m.c_m + "." + m.c_y}</span>
                                         <span className="fa fa-eye"></span> 15
                                 </span>
                                 </div>
                             </div>
-                        ) : 'no news'
-                    } */}
+                        : 'no news')) 
+                    }
                     <div className="text-right">
                         <Link to="/news" className="general__anchor">Все новости</Link>
                     </div>
@@ -133,6 +143,7 @@ class Sidebar extends Component {
 const mapStateToProps = state => (
     {
         events: state.events.events,
+        newss:state.news.news,
         lang: state.lang.lang
     }
 )

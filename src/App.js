@@ -54,6 +54,9 @@ import Accreditation from './pages/accreditation';
 import vacancySingle from './pages/vacancySingle';
 import Opens from './pages/opens';
 import opensSingle from './pages/opensSingle';
+import Sitemap from './pages/sitemap';
+import Symbols from './pages/symbols';
+import Event from './pages/eventsSingle';
 
 export default class App extends Component {
   render() {
@@ -66,6 +69,7 @@ export default class App extends Component {
             <Route exact path="/news" component={News} />
             <Route exact path="/news/:id" component={singleNews} />
             <Route exact path="/events" component={Events} />
+            <Route exact path="/events/:id" component={Event} />
             <Route exact path="/tenders" component={Tender} />
             <Route exact path="/tenders/:id" component={TenderSingle} />
             <Route exact path="/economics" component={Economic} />
@@ -110,7 +114,8 @@ export default class App extends Component {
             <Route exact path="/accreditation" component={Accreditation} />
             <Route exact path="/open" component={Opens} />
             <Route exact path="/open/:id" component={opensSingle} />
-            
+            <Route exact path="/sitemap" component={Sitemap} />
+            <Route exact path="/symbols" component={Symbols} />
           </Switch>
           <Footer />
         </div>
